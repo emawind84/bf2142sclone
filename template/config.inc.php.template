@@ -1,0 +1,16 @@
+<?php
+
+// Database connection information
+$DBIP = '{:DBIP:}';
+$DBNAME = '{:DBNAME:}';
+$DBLOGIN = '{:DBLOGIN:}';
+$DBPASSWORD = '{:DBPASSWORD:}';
+
+// Leader board title
+$TITLE = '{:TITLE:}';
+
+// Refresh time in seconds for stats
+define ('RANKING_REFRESH_TIME', 600); // -> default: 600 seconds (10 minutes)
+
+// Number of players to show on the leaderboard frontpage
+define ('LEADERBOARD_COUNT', 25);
