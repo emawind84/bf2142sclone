@@ -46,7 +46,7 @@ $template = '
 					$template .= '" alt="' . esc_attr((RANKING_PIDS_AS_NAMES ? $player['id'] : $player['name'])) . ' - ' . getArmyByID($playerFavorite['army']) . '" />
 					<img class="weapon" src="' . $ROOT . 'game-images/weapons/weapon_' . $playerFavorite['weapon'] . '.jpg" alt="' . $weapons[$playerFavorite['weapon']]['name'] . '" />
 					<img class="vehicle" src="' . $ROOT . 'game-images/vehicles/vehicles_' . $playerFavorite['vehicle'] . '.jpg" alt="' . getVehicleByID($playerFavorite['vehicle']) . '" />
-					<img class="kit" src="' . $ROOT . 'game-images/kits/kit_' . $playerFavorite['kit'] . '.jpg" alt="' . getKitByID($playerFavorite['kit']) . '" />
+					<img class="kit" src="' . $ROOT . 'game-images/kits/kit_' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png" alt="' . getKitByID($playerFavorite['kit']) . '" width="160" height="160" style="width:64px;height:64px;object-fit: contain;" />
 					<img class="map" src="' . $ROOT . 'game-images/maps/map_' . $playerFavorite['map'] . '.jpg" alt="' . getMapByID( $playerFavorite['map'] ) . '" />
 					<img id="flag" src="' . $ROOT . 'game-images/flags/' . esc_attr(RANKING_HIDE_COUNTRY ? 'xx' : strtoupper($player['country'])) . '.png" alt="' . getCountryByCode($player['country']) . '" width="32" height="24" />
 				</div>
@@ -719,7 +719,7 @@ $template = '
 						<tr>
 							<td>Favorite Victim<br />(Kills to) </td>';
 								if ($victims && trim($victims[0]['victim']) != '')
-								  $template .= '<td nowrap="nowrap"><acronym title="his rank is '.getRankByID(getRankFromPID($victims[0]['victim'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($victims[0]['victim']).'.gif"> <a rel="nofollow" href="?pid=' . $victims[0]['victim'] . '">' . esc_attr(RANKING_PIDS_AS_NAMES ? $victims[0]['victim'] : getNickFromPID($victims[0]['victim'])) . '</a></acronym> (' . $victims[0]['count'] . ')</td>';
+								  $template .= '<td nowrap="nowrap"><acronym title="his rank is '.getRankByID(getRankFromPID($victims[0]['victim'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($victims[0]['victim']).'.png"> <a rel="nofollow" href="?pid=' . $victims[0]['victim'] . '">' . esc_attr(RANKING_PIDS_AS_NAMES ? $victims[0]['victim'] : getNickFromPID($victims[0]['victim'])) . '</a></acronym> (' . $victims[0]['count'] . ')</td>';
 								else
 									$template .= '<td>You are no one\'s worst enemy. Go bully someone.</td>';
 							$template .= '
@@ -738,7 +738,7 @@ $template = '
 									{
 										if ($written != 0) $template .=  ', ';
 										$written++;
-										$template .=  '<acronym title="his rank is '.getRankByID(getRankFromPID($victims[$i]['victim'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($victims[$i]['victim']).'.gif"> <a rel="nofollow" href="?pid='.$victims[$i]['victim'].'">' . esc_attr(RANKING_PIDS_AS_NAMES ? $victims[$i]['victim'] : getNickFromPID($victims[$i]['victim'])) . '</a></acronym> ('.$victims[$i]['count'].')';
+										$template .=  '<acronym title="his rank is '.getRankByID(getRankFromPID($victims[$i]['victim'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($victims[$i]['victim']).'.png"> <a rel="nofollow" href="?pid='.$victims[$i]['victim'].'">' . esc_attr(RANKING_PIDS_AS_NAMES ? $victims[$i]['victim'] : getNickFromPID($victims[$i]['victim'])) . '</a></acronym> ('.$victims[$i]['count'].')';
 									}
 								}
 								$template .= '
@@ -747,7 +747,7 @@ $template = '
 						<tr>
 							<td nowrap="nowrap">Worst Enemy<br />(Deaths by)</td>';
 								if ($enemies)
-									$template .=  '<td nowrap="nowrap"><acronym title="his rank is '.getRankByID(getRankFromPID($enemies[0]['attacker'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($enemies[0]['attacker']).'.gif"> <a rel="nofollow" href="?pid=' . $enemies[0]['attacker'] . '">' . esc_attr(RANKING_PIDS_AS_NAMES ? $enemies[0]['attacker'] : getNickFromPID($enemies[0]['attacker'])) . '</a></acronym> (' . $enemies[0]['count'] . ')</td>';
+									$template .=  '<td nowrap="nowrap"><acronym title="his rank is '.getRankByID(getRankFromPID($enemies[0]['attacker'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($enemies[0]['attacker']).'.png"> <a rel="nofollow" href="?pid=' . $enemies[0]['attacker'] . '">' . esc_attr(RANKING_PIDS_AS_NAMES ? $enemies[0]['attacker'] : getNickFromPID($enemies[0]['attacker'])) . '</a></acronym> (' . $enemies[0]['count'] . ')</td>';
 								else
 									$template .=  '<td>It seems you are invincible!</td>';
 								$template .= '
@@ -767,7 +767,7 @@ $template = '
 									{
 										if ($written != 0) $template .=  ', ';
 										$written++;
-										$template .=  '<acronym title="his rank is '.getRankByID(getRankFromPID($enemies[$i]['attacker'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($enemies[$i]['attacker']).'.gif"> <a rel="nofollow" href="?pid='.$enemies[$i]['attacker'].'">' . esc_attr(RANKING_PIDS_AS_NAMES ? $enemies[$i]['attacker'] : getNickFromPID($enemies[$i]['attacker'])) . '</a></acronym> ('.$enemies[$i]['count'].')';
+										$template .=  '<acronym title="his rank is '.getRankByID(getRankFromPID($enemies[$i]['attacker'])).'"><img src="'.$ROOT.'game-images/ranks/icon/rank_'.getRankFromPID($enemies[$i]['attacker']).'.png"> <a rel="nofollow" href="?pid='.$enemies[$i]['attacker'].'">' . esc_attr(RANKING_PIDS_AS_NAMES ? $enemies[$i]['attacker'] : getNickFromPID($enemies[$i]['attacker'])) . '</a></acronym> ('.$enemies[$i]['count'].')';
 									}
 								}
 								$template .= '	
@@ -861,13 +861,13 @@ $template = '
 								$awardlevel = getBadgeLevel($PlayerAwards[$i]);
 								$template .= '
 								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/';
+									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($awardlevel>0)
-										$template .= 'front/'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel;
+										$template .= 'front/badge_front_'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel;
 									else
-										$template .= 'locked/'.$PlayerAwards[$i][$awardlevel][AWD].'_0';
+										$template .= 'front/badge_front_'.$PlayerAwards[$i][$awardlevel][AWD].'_0';
 									
-									$template .= '.png\');" width="42" height="42" alt="" />
+									$template .= '.png" width="90" height="50" alt="" />
 									
 									<div class="award-pop dir-';
 										if ($i < $count / 2)
@@ -877,7 +877,7 @@ $template = '
 									
 										$template .= '">
 										<p>
-											<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/perspective/'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel.'.jpg\');" width="128" height="128" alt="" />
+											<img style="width:128px;height:128px;object-fit:contain;" src="' . $ROOT . 'game-images/awards/perspective/badge_persp_'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel.'.png" width="320" height="190" alt="" />
 											<strong>'.$PlayerAwards[$i][$awardlevel][NAME].'</strong>
 										</p>
 										<ul>
@@ -902,13 +902,13 @@ $template = '
 
 								$template .= '
 								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/';
+									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($PlayerAwards[$i][0][LEVEL]>0)
-										$template .= 'front/'.$PlayerAwards[$i][0][AWD];
+										$template .= 'front/medal_front_'.$PlayerAwards[$i][0][AWD];
 									else
-										$template .= 'locked/'.$PlayerAwards[$i][0][AWD];
+										$template .= 'front/medal_front_'.$PlayerAwards[$i][0][AWD] . '_bw';
 									
-									$template .= '.png\');" width="42" height="42" alt="" />
+									$template .= '.png" width="50" height="75" alt="" />
 									<div class="award-pop dir-';
 									if ($i-$oldcount<$awdcount/2)
 										$template .= 'left';
@@ -917,7 +917,7 @@ $template = '
 									
 									$template .= '">
 										<p>
-											<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/perspective/'.$PlayerAwards[$i][0][AWD].'.jpg\');" width="128" height="128" alt="" />
+											<img style="width:128px;height:128px;object-fit:contain;" src="' . $ROOT . 'game-images/awards/perspective/medal_persp_'.$PlayerAwards[$i][0][AWD].'.png" width="320" height="190" alt="" />
 											<strong>'.$PlayerAwards[$i][0][NAME].'</strong>
 										</p>
 										<ul>
@@ -943,13 +943,13 @@ $template = '
 
 								$template .= '
 								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/';
+									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($PlayerAwards[$i][0][LEVEL]>0)
-										$template .= 'front/'.$PlayerAwards[$i][0][AWD];
+										$template .= 'front/ribbons_front_'.$PlayerAwards[$i][0][AWD];
 									else
-										$template .= 'locked/'.$PlayerAwards[$i][0][AWD];
+										$template .= 'front/ribbons_front_'.$PlayerAwards[$i][0][AWD].'_bw';
 									
-									$template .= '.png\');" width="42" height="42" alt="" />
+									$template .= '.png" width="90" height="30" alt="" />
 									<div class="award-pop dir-';
 									if ($i-$oldcount<$awdcount/2)
 										$template .= 'left';
@@ -958,7 +958,7 @@ $template = '
 									
 									$template .= '">
 										<p>
-											<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/perspective/'.$PlayerAwards[$i][0][AWD].'.jpg\');" width="128" height="128" alt="" />
+											<img style="width:128px;height:128px;object-fit:contain;" src="' . $ROOT . 'game-images/awards/perspective/ribbons_persp_'.$PlayerAwards[$i][0][AWD].'.png" width="350" height="160" alt="" />
 											<strong>'.$PlayerAwards[$i][0][NAME].'</strong>
 										</p>
 										<ul>
@@ -971,97 +971,25 @@ $template = '
 							$template .= '
 						</td>
 					</tr>
-					<tr>
-						<td>SF Badges<br />&amp; Medals</td>
-						<td class="awards-row">';
-							$oldcount = $count;
-							$awdcount = getSFBadgeCount();
-							$count = $oldcount+$awdcount;
-							for ($i=$oldcount; $i<$count;$i++)
-							{
-								$awardlevel = getBadgeLevel($PlayerAwards[$i]);
-								if ($i-$oldcount<10)
-								{
-									$template .= '
-									<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-										<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/';
-										if ($awardlevel>0)
-											$template .= 'front/'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel;
-										else
-											$template .= 'locked/'.$PlayerAwards[$i][$awardlevel][AWD].'_0';
 
-										$template .= '.png\');" width="42" height="42" alt="" />
-										<div class="award-pop dir-';
-										if ($i-$oldcount<$awdcount/2)
-											$template .= 'left';
-										else
-											$template .= 'right';
-											
-										$template .= '">
-											<p>
-												<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/perspective/'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel.'.jpg\');" width="128" height="128" alt="" />
-												<strong>'.$PlayerAwards[$i][$awardlevel][NAME].'</strong>
-											</p>
-											<ul>
-												<li><strong>Basic</strong>'.earned($PlayerAwards[$i][1][EARNED]).'</li>
-												<li><strong>Veteran</strong>'.earned($PlayerAwards[$i][2][EARNED]).'</li>
-												<li><strong>Expert</strong>'.earned($PlayerAwards[$i][3][EARNED]).'</li>
-											</ul>
-										</div>
-									</div>';
-								}
-								else
-								{
-									$template .= '
-									<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-										<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/';
-										if ($PlayerAwards[$i][0][LEVEL]>0)
-											$template .= 'front/'.$PlayerAwards[$i][0][AWD];
-										else
-											$template .= 'locked/'.$PlayerAwards[$i][0][AWD];
-										
-										$template .= '.png\');" width="42" height="42" alt="" />
-										<div class="award-pop dir-';
-										if ($i-$oldcount<$awdcount/2)
-											$template .= 'left';
-										else
-											$template .= 'right';
-										
-										$template .= '">
-											<p>
-												<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/perspective/'.$PlayerAwards[$i][0][AWD].'.jpg\');" width="128" height="128" alt="" />
-												<strong>'.$PlayerAwards[$i][0][NAME].'</strong>
-											</p>
-											<ul>
-												<li>First received: '.earned($PlayerAwards[$i][0][FIRST]).'</li>
-												<li>Last awarded: '.earned($PlayerAwards[$i][0][EARNED]).'</li>
-												<li>Total awards: '.$PlayerAwards[$i][0][LEVEL].'</li>
-											</ul>
-										</div>
-									</div>';
-								}
-							}
-
-							$template .= '
-						</td>
-					</tr>
 					<tr>
-						<td>SF Ribbons</td>
+						<td>Pins</td>
 						<td class="awards-row extra-space">';
 							$oldcount = $count;
-							$awdcount = getSFRibbonCount();
+							$awdcount = getPinCount();
 							$count = $oldcount+$awdcount;
 							for ($i=$oldcount; $i<$count;$i++)
 							{
+
 								$template .= '
 								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/';
+									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($PlayerAwards[$i][0][LEVEL]>0)
-										$template .= 'front/'.$PlayerAwards[$i][0][AWD];
+										$template .= 'front/pin_front_'.$PlayerAwards[$i][0][AWD];
 									else
-										$template .= 'locked/'.$PlayerAwards[$i][0][AWD];
+										$template .= 'front/pin_front_'.$PlayerAwards[$i][0][AWD].'_bw';
 									
-									$template .= '.png\');" width="42" height="42" alt="" />
+									$template .= '.png" width="50" height="60" alt="" />
 									<div class="award-pop dir-';
 									if ($i-$oldcount<$awdcount/2)
 										$template .= 'left';
@@ -1070,7 +998,7 @@ $template = '
 									
 									$template .= '">
 										<p>
-											<img src="' . $ROOT . 'spacer.gif" style="background: url(\'' . $ROOT . 'game-images/awards/perspective/'.$PlayerAwards[$i][0][AWD].'.jpg\');" width="128" height="128" alt="" />
+											<img style="width:128px;height:128px;object-fit:contain;" src="' . $ROOT . 'game-images/awards/perspective/pin_persp_'.$PlayerAwards[$i][0][AWD].'.png" width="190" height="250" alt="" />
 											<strong>'.$PlayerAwards[$i][0][NAME].'</strong>
 										</p>
 										<ul>
@@ -1083,6 +1011,7 @@ $template = '
 							$template .= '
 						</td>
 					</tr>
+					
 				</table>';
 			
 						$RANK_INFO = getNextRankInfo($_GET['pid']);
@@ -1097,7 +1026,7 @@ $template = '
 						foreach($RANK_INFO as $key => $value)
 						{
 							$template .= '
-							<img src="' . $ROOT . 'game-images/ranks/progress/rank_'.$value['rank'].'.png" alt="" style="float: left; margin: 0 5px 5px 0" height="83" width="83" />			
+							<img src="' . $ROOT . 'game-images/ranks/progress/rank_'.$value['rank'].'.png" alt="" style="float: left; margin: 0 5px 5px 0;width:83px;height:83px;object-fit:contain;" height="110" width="110" />			
 							<p>
 								<strong>Next Rank: '.$value['title'].'</strong>
 							</p>

@@ -265,6 +265,10 @@ function getArmyName($name)
 		case "eu":
 			return "European Union";
 			break;
+
+		case "pac":
+			return "Pan Asian Coalition";
+			break;
 			
 		default:
 			return "Unknown Army ($name)";

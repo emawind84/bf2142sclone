@@ -41,6 +41,29 @@ $template = '
 							}
 						}
 						$port = $s['port'] ? $s['port'] : '0';
+
+						$sponsortext = $s['data'] ? esc_attr($s['data']['server']['bf2142_sponsortext']) : '';
+						// Check if string starts with '$vars:'
+						if (strpos($sponsortext, '$vars:') === 0) {
+							// Step 1: Remove the prefix and suffix
+							$trimmed = trim($sponsortext, '$');
+							$trimmed = str_replace('vars:', '', $trimmed);
+							// Step 2: Split into key-value pairs
+							$pairs = explode(';', $trimmed);
+							// Start HTML output
+							$sponsortext = "<ul>\n";
+							foreach ($pairs as $pair) {
+								list($key, $value) = explode('=', $pair, 2);
+								// Check if value is a URL
+								if (filter_var($value, FILTER_VALIDATE_URL)) {
+									$sponsortext .= "<li><strong>$key:</strong> <a href=\"$value\" target=\"_blank\">$value</a></li>\n";
+								} else {
+									$sponsortext .= "<li><strong>$key:</strong> $value</li>\n";
+								}
+							}
+							$sponsortext .= "</ul>";
+						}
+
 						$template .= '
 						<table border="0" cellspacing="0" cellpadding="0" style="width: 100%; margin: 0;" class="stat server-stat">
 						<tbody>
@@ -56,9 +79,9 @@ $template = '
 							</tr>
 							<tr>
 								<td class="column-key">Dedicated</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_dedicated']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_dedicated']) : '-') . '</td>
 								<td class="column-key">OS</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_os']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_os']) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">Version</td>
@@ -68,59 +91,59 @@ $template = '
 							</tr>
 							<tr>
 								<td class="column-key">Ranked</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_ranked']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_ranked']) : '-') . '</td>
 								<td class="column-key">Pure</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_pure']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_pure']) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">BattleRecorder</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_autorec']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_autorec']) : '-') . '</td>
 								<td class="column-key">BattleCommo</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_voip']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_voip']) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">Punkbuster</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_anticheat']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_anticheat']) : '-') . '</td>
 								<td class="column-key">Password</td>
 								<td>' . ($s['data'] ? esc_attr($s['data']['server']['password']) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">TK Mode</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_tkmode']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_tkmode']) : '-') . '</td>
 								<td class="column-key">Vehicles</td>
-								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2_novehicles'] == 0 ? '1' : '0')) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2142_novehicles'] == 0 ? '1' : '0')) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">Friendly Fire</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_friendlyfire']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_friendlyfire']) : '-') . '</td>
 								<td class="column-key">Allowbalance</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_autobalanced']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_autobalanced']) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">Rounds per Map</td>
 								<td>' . ($s['data'] ? esc_attr($s['data']['server']['roundtime']) : '-') . '</td>
 								<td class="column-key">Allow Global Unlocks</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_autobalanced']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_autobalanced']) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">Spawn Time</td>
-								<td>' . ($s['data'] ? esc_attr((int)$s['data']['server']['bf2_spawntime']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr((int)$s['data']['server']['bf2142_spawntime']) : '-') . '</td>
 								<td class="column-key">Bot Ratio</td>
-								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2_coopbotratio'] ? $s['data']['server']['bf2_coopbotratio'] : '0')) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2142_coopbotratio'] ? $s['data']['server']['bf2142_coopbotratio'] : '0')) : '-') . '</td>
 							</tr>
 								<td class="column-key">Time Limit</td>
 								<td>' . ($s['data'] ? esc_attr($s['data']['server']['timelimit']) : '-') . '</td>
 								<td class="column-key">Number of Bots</td>
-								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2_coopbotcount'] ? $s['data']['server']['bf2_coopbotcount'] : '0')) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2142_coopbotcount'] ? $s['data']['server']['bf2142_coopbotcount'] : '0')) : '-') . '</td>
 							<tr>
 								<td class="column-key">Ticket Ratio</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_ticketratio']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_ticketratio']) : '-') . '</td>
 								<td class="column-key">Bot Difficulty</td>
-								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2_coopbotdiff'] ? $s['data']['server']['bf2_coopbotdiff'] : '0')) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr(($s['data']['server']['bf2142_coopbotdiff'] ? $s['data']['server']['bf2142_coopbotdiff'] : '0')) : '-') . '</td>
 							</tr>
 							<tr>
 								<td class="column-key">Team Ratio</td>
-								<td>' . ($s['data'] ? esc_attr((int)$s['data']['server']['bf2_teamratio']) : '-') . '</td>
+								<td>' . ($s['data'] ? esc_attr((int)$s['data']['server']['bf2142_teamratio']) : '-') . '</td>
 								<td class="column-key"></td>
 								<td></td>
 							</tr>
@@ -128,7 +151,7 @@ $template = '
 								<td class="subheading" colspan="999">SERVER MESSAGE</td>
 							</tr>
 							<tr>
-								<td style="height: 50px;  vertical-align: top;" colspan="999">' . ($s['data'] ? esc_attr($s['data']['server']['bf2_sponsortext']) : '') . '</td>
+								<td style="height: 50px;  vertical-align: top;" colspan="999">' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_sponsortext']) : '') . '</td>
 							</tr>
 						</tbody>
 						</table>
@@ -160,12 +183,12 @@ $template = '
 							</tr>
 							</tr>
 								<td class="column-key">Map Size</td>
-								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2_mapsize']) : '') . '</td>
+								<td>' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_mapsize']) : '') . '</td>
 							</tr>
 							';
-							$graphicUrl = $s['data']['server']['bf2_sponsorlogo_url'];
+							$graphicUrl = $s['data']['server']['bf2142_sponsorlogo_url'];
 							if (!$graphicUrl) { 
-								$graphicUrl = $s['data']['server']['bf2_communitylogo_url'];
+								$graphicUrl = $s['data']['server']['bf2142_communitylogo_url'];
 							}
 							$template .= '
 							</tr>
@@ -184,7 +207,7 @@ $template = '
 					<div style="margin-top: 10px; white-space: nowrap;">';
 						$teams = array('team1', 'team2');
 						foreach ($teams as $t) {
-							$team = strtolower($s['data']['server']["bf2_$t"]);
+							$team = strtolower($s['data']['server']["bf2142_$t"]);
 							$template .= '
 						<div style="display: inline-block; width: 50%; vertical-align: top;">
 							<div style="display: block; border: 1px solid #111; padding: 5px; background: #383c33; color: #fff; font: normal 17px Verdana; text-align: center;">' . esc_attr(strtoupper(getArmyName($team))) . '</div>

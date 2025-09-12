@@ -124,22 +124,31 @@ if($GO == "0" && $PID)
 			header("Location: /"); // Redirect to home, since there's no such player
 			exit();
 		}
-		$victims 		= getFavouriteVictims($PID); // receive victim data
-		$enemies 		= getFavouriteEnemies($PID); // receive enemie data
-		$armies 		= getArmyData($PID); // receive army data
-		$armySummary 	= getArmySummaries($armies); // retrieve Army summary
-		$unlocks 		= getUnlocksByPID($PID);	// retrieve unlock data
-		$vehicles 		= getVehicleData($PID);	// retrieve vehivle data
-		$vehicleSummary = getVehicleSummaries($vehicles); // retrieve Vehicle summary
-		$weapons 		= getWeaponData($PID, $player); // retrieve Weapon data
-		$weaponSummary 	= getWeaponSummary($weapons, $player); // retrieve weapon summary
-		$equipmentSummary = getEquipmentSummary($weapons, $player); // retrieve equipment summary
+		//$victims 		= getFavouriteVictims($PID); // receive victim data
+		//$enemies 		= getFavouriteEnemies($PID); // receive enemie data
+		//$armies 		= getArmyData($PID); // receive army data
+		//$armySummary 	= getArmySummaries($armies); // retrieve Army summary
+		//$unlocks 		= getUnlocksByPID($PID);	// retrieve unlock data
+		//$vehicles 		= getVehicleData($PID);	// retrieve vehivle data
+		//$vehicleSummary = getVehicleSummaries($vehicles); // retrieve Vehicle summary
+		//$weapons 		= getWeaponData($PID, $player); // retrieve Weapon data
+		//$weaponSummary 	= getWeaponSummary($weapons, $player); // retrieve weapon summary
+		//$equipmentSummary = getEquipmentSummary($weapons, $player); // retrieve equipment summary
 		$kits 			= getKitData($PID); // retrieve kit data
 		$kitSummary 	= getKitSummary($kits, $player); // retrieve kits summary
 		$maps 			= getMapData($PID);
 		$mapSummary 	= getMapSummary($maps);
 		$TheaterData 	= getTheaterData($PID);  // retrueve Theater Data
-		$playerFavorite = getPlayerFavorites($weapons, $vehicles, $kits, $armies, $maps, $TheaterData); // get player summary
+		//$playerFavorite = getPlayerFavorites($weapons, $vehicles, $kits, $armies, $maps, $TheaterData); // get player summary
+		$playerFavorite = array(
+			'weapon' => $player['fw'],
+			'equipment' => $player['fe'],
+			'vehicle' => $player['fv'],
+			'kit' => $player['fk'],
+			'army' => 0, //$player['fa'],
+			'map' => $player['fm'],
+			'theatre' => 0
+		);
 		$PlayerAwards  	= getAwardsByPID($PID);
 
 		// Include our template file

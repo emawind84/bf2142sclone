@@ -1,3 +1,3 @@
 <?php
-	$query = "SELECT * FROM vehicles WHERE id = $PID;";
+	$query = "SELECT * FROM stats_v WHERE pid = $PID;";
 ?>

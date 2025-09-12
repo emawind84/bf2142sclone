@@ -3,8 +3,7 @@
 include_once(ROOT . DS .'queries'. DS .'getBadgeByID.php');
 include_once(ROOT . DS .'queries'. DS .'getMedalByID.php');
 include_once(ROOT . DS .'queries'. DS .'getRibbonByID.php');
-include_once(ROOT . DS .'queries'. DS .'getSFRibbonsByID.php');
-include_once(ROOT . DS .'queries'. DS .'getSFBadgeByID.php');
+include_once(ROOT . DS .'queries'. DS .'getPinByID.php');
 
 define('AWD', 0);
 define('LEVEL', 1);
@@ -142,37 +141,19 @@ function getAwardsByPID($PID)
 	}
 
 	#append next after those
-	#get SFbadges
+	#get Pins
 	$oldcount = $count;
-	$count = $oldcount+getSFBadgeCount();
+	$count = $oldcount+getPinCount();
 	for ($i=$oldcount; $i<$count; $i++)
 	{
-		$AWD = trim(getSFBadge($i-$oldcount));
-		for ($LEVEL=0; $LEVEL<4; $LEVEL++) // levels!
-		{
-			$award = getAwardByPID_and_AWD($PID, $AWD, $LEVEL);
-			$PlayerAwards[$i][$LEVEL][AWD] = isset($AWD) ? $AWD : 0;
-			$PlayerAwards[$i][$LEVEL][LEVEL] = $LEVEL;
-			$PlayerAwards[$i][$LEVEL][EARNED] = isset($award[0]['earned']) ? $award[0]['earned'] : 0;
-			$PlayerAwards[$i][$LEVEL][FIRST] = isset($award[0]['first']) ? $award[0]['first'] : 0;
-			$PlayerAwards[$i][$LEVEL][NAME] = getSFBadgeByID($AWD);
-		}
-	}
-
-	#append next after those
-	#get SFRibbons
-	$oldcount = $count;
-	$count = $oldcount+getSFRibbonCount();
-	for ($i=$oldcount; $i<$count; $i++)
-	{
-		$AWD = trim(getSFRibbon($i-$oldcount));
+		$AWD = trim(getPin($i-$oldcount));
 		$LEVEL=0; // levels!
 		$award = getAwardByPID_and_AWD_NOLEVEL($PID, $AWD);
 		$PlayerAwards[$i][$LEVEL][AWD] = isset($AWD) ? $AWD : 0;
 		$PlayerAwards[$i][$LEVEL][LEVEL] = isset($award[0]['level']) ? $award[0]['level'] : 0;
 		$PlayerAwards[$i][$LEVEL][EARNED] = isset($award[0]['earned']) ? $award[0]['earned'] : 0;
 		$PlayerAwards[$i][$LEVEL][FIRST] = isset($award[0]['first']) ? $award[0]['first'] : 0;
-		$PlayerAwards[$i][$LEVEL][NAME] = getSFRibbonByID($AWD);
+		$PlayerAwards[$i][$LEVEL][NAME] = getPinByID($AWD);
 	}
 
 	return $PlayerAwards;

@@ -1,4 +1,6 @@
 <?php
-	$query = "SELECT * FROM awards where id = $PID AND awd = $AWD LIMIT 1";
+	$query = "SELECT * from (
+	SELECT pid as id, concat(atype, LPAD(aid, 2, '0')) as awd, alvl as level, earned, first
+	FROM awards ) awards where id = $PID AND awd = $AWD LIMIT 1";
 ?>
 

@@ -51,7 +51,9 @@ function checkReqs($rank, $PID)
 		$player_awards = array();
 
 		// Start a query to get users awards
-		$query = "SELECT * FROM awards where id = $PID";
+		$query = "SELECT * FROM (
+			SELECT pid as id, concat(atype, LPAD(aid, 2, '0')) as awd, 1 as level, earned, first
+			FROM awards ) awards where id = $PID";
 		$result = mysqli_query($GLOBALS['link'], $query) or die('Query failed: ' . mysqli_error($GLOBALS['link']));
 
 		// Build the players earned awards to an array

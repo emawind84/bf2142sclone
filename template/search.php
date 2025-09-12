@@ -77,7 +77,7 @@ if ($SEARCHVALUE)
 						$template .= '
 					<tr>
 						<td>
-							<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$searchresults[$i]['rank'].'.gif" alt="" style="border: 0pt none ;"> 
+							<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$searchresults[$i]['rank'].'.png" alt="" style="border: 0pt none ;"> 
 							<a href="'.$ROOT.'?pid='.$searchresults[$i]['id'].'"> ' . esc_attr(RANKING_PIDS_AS_NAMES ? $searchresults[$i]['id'] : $searchresults[$i]['name']) . '</a>&nbsp;
 							<img src="'.$ROOT.'game-images/flags/' . esc_attr(RANKING_HIDE_COUNTRY ? 'xx' : strtoupper($searchresults[$i]['country'])) .'.png" height="12" width = "16">
 						</td>

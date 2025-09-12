@@ -56,7 +56,7 @@ $template = '
 						{
 							$template .= '
 							<td>
-								<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$v['rank'].'.gif" alt="'.getRankByID($v['rank']).'">
+								<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$v['rank'].'.png" alt="'.getRankByID($v['rank']).'">
 								<a href="'.$ROOT.'?pid='.$v['id'].'">' . esc_attr(RANKING_PIDS_AS_NAMES ? $v['id'] : $v['name']) . '</a>
 								<br/>'. $v['value'] .'
 							</td>';

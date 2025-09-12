@@ -1,7 +1,8 @@
 <?php
 function getTheaterTimeQueryByName($PID, $ExpansionID)
 {
-	$id_lines  = file(getcwd()."/queries/theater-".$ExpansionID.".list");
+	//$id_lines  = file(getcwd()."/queries/theater-".$ExpansionID.".list");
+	$id_lines  = file(getcwd()."/queries/theater.list");
 	$maplist = '';
 	$first = true;
 	foreach ($id_lines as $key => $value)

@@ -59,7 +59,7 @@ $template = '
 									<tr>
 										<td>'.($key+1).'</td>
 										<td>
-											<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$value['rank'].'.gif">&nbsp;
+											<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$value['rank'].'.png">&nbsp;
 											<a href="'.$ROOT.'?pid='.$value['id'].'">'. esc_attr(RANKING_PIDS_AS_NAMES ? $value['id'] : $value['name']) .'</a>
 										</td>
 										<td>'.$value['score'].'</td>

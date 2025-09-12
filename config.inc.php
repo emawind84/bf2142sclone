@@ -22,7 +22,7 @@ defineVar('DBPASSWORD', 'bf2142');
 defineVar('HOME_PAGE', 'servers');
 
 // Leader board title
-defineVar('TITLE', 'BF2Stats emawind.com');
+defineVar('TITLE', 'BF2142 Stats');
 
 // Whether to show page load speed in the footer
 defineVar('FOOTER_PAGELOADSPEED_ENABLE', false);
