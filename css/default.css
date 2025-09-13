@@ -45,8 +45,8 @@ border-bottom: 1px solid #474642;
 
 div.unlock-inline {
 float: left;
-width: 113px;
-height: 33px;
+width: 46px;
+height: auto;
 position: relative;
 margin: 0 7px 0 5px;
 }

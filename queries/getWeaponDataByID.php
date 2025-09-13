@@ -1,3 +1,3 @@
 <?php
-	$query = "SELECT * FROM stats_w WHERE pid = $PID;";
+	$query = "SELECT * FROM weapons WHERE id = $PID;";
 ?>

@@ -232,7 +232,7 @@ $template = '
 								<tr>
 									<td>' . ($s['data'] ? esc_attr($k+1) : '-') . '</td>
 									<td>' . '
-										<img src="' . $ROOT . 'game-images/ranks/header/rank_' . esc_attr($p['rank']) . '.png" alt="' .  esc_attr(getRankByID($p['rank'])) . '" style="vertical-align: middle;" />
+										<img src="' . $ROOT . 'game-images/ranks/icon/rank_' . esc_attr($p['rank']) . '.png" alt="' .  esc_attr(getRankByID($p['rank'])) . '" style="vertical-align: middle;" />
 										<a href="' . "$ROOT?pid=" . esc_attr($p['pid']) . '" title="' . esc_attr(RANKING_PIDS_AS_NAMES ? $p['pid'] : $p['name']) . '" style="vertical-align: middle;">' . esc_attr(RANKING_PIDS_AS_NAMES ? $p['pid'] : $p['name']) . '</a>
 									</td>
 									<td>' . ($s['data'] ? esc_attr($p['score']) : '-') . '</td>

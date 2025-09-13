@@ -77,13 +77,13 @@ $template = '
 										$template .= '<img src="game-images/serverIcons/Serverload_green.png" alt="Low Load" />';
 									}
 
-									if (preg_match('/^linux/', $s['data']['server']['bf2_os'])) {
+									if (preg_match('/^linux/', $s['data']['server']['bf2142_os'])) {
 										$template .= '<img src="game-images/serverIcons/linux.png" alt="Linux" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/Windows.png" alt="Windows" />';
 									}
 
-									if (preg_match('/-64$/', $s['data']['server']['bf2_os'])) {
+									if (preg_match('/-64$/', $s['data']['server']['bf2142_os'])) {
 										$template .= '<img src="game-images/serverIcons/64bit.png" alt="64-bit" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/Windows.png" alt="Not 64-bit" />';
@@ -96,31 +96,31 @@ $template = '
 										$template .= '<img src="game-images/serverIcons/unknown_mod.png" alt="unknown_mod" />';
 									}
 
-									if ($s['data']['server']['bf2_ranked']) {
+									if ($s['data']['server']['bf2142_ranked']) {
 										$template .= '<img src="game-images/serverIcons/Ranked.png" alt="Ranked" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="Unranked" />';
 									}
 
-									if ($s['data']['server']['bf2_autorec']) {
+									if ($s['data']['server']['bf2142_autorec']) {
 										$template .= '<img src="game-images/serverIcons/battlerec.png" alt="BattleRecorder On" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="BattleRecorder Off" />';
 									}
 
-									if ($s['data']['server']['bf2_voip']) {
+									if ($s['data']['server']['bf2142_voip']) {
 										$template .= '<img src="game-images/serverIcons/battleCom.png" alt="BattleCommo On" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="BattleCommo Off" />';
 									}
 
-									if ($s['data']['server']['bf2_anticheat']) {
+									if ($s['data']['server']['bf2142_anticheat']) {
 										$template .= '<img src="game-images/serverIcons/punkBuster.png" alt="Punkbuster On" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="Punkbuster Off" />';
 									}
 									
-									if ($s['data']['server']['bf2_pure']) {
+									if ($s['data']['server']['bf2142_pure']) {
 										$template .= '<img src="game-images/serverIcons/PureContent.png" alt="Pure" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="Not Pure" />';
@@ -144,7 +144,7 @@ $template = '
 									<img src="' . esc_attr($mapUrl) . '" alt="' . esc_attr($map) . '" />' .
 									' ' . esc_attr($s['data']['server']['mapname']) . '
 								</td>
-								<td>' . esc_attr($s['data']['server']['bf2_mapsize']) . '</td>
+								<td>' . esc_attr($s['data']['server']['bf2142_mapsize']) . '</td>
 								<td>' . (preg_match('/gpm_coop/i', $s['data']['server']['gametype']) ? 'Co-op' : 'Conquest') . '</td>
 								<td>' . esc_attr($s['data']['server']['gamevariant']). '</td>
 								<td>' . esc_attr(preg_replace('/^(\d+\.\d+).*$/', '$1', $s['data']['server']['gamever'])). '</td>

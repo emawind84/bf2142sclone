@@ -225,17 +225,58 @@ function getWeaponData($PID, $player)
 		$SQLweapons[] = $row;
 	}
 
-	$weapons[0]['name'] = 'Assault Rifles';
-	$weapons[1]['name'] = 'Grenade Launcher Attachment';
-	$weapons[2]['name'] = 'Carbines';
-	$weapons[3]['name'] = 'Light Machine Guns';
-	$weapons[4]['name'] = 'Sniper Rifles';
-	$weapons[5]['name'] = 'Pistols';
-	$weapons[6]['name'] = 'AT/AA';
-	$weapons[7]['name'] = 'Submachine Guns';
-	$weapons[8]['name'] = 'Shotguns';
+	$weapons[0]['name'] = 'Park 52 Sniper Rifle';
+	$weapons[1]['name'] = 'Krylov FA-37 AR';
+	$weapons[2]['name'] = 'Sudnik VP';
+	$weapons[3]['name'] = 'Malkov RK-11 SMG';
+	$weapons[4]['name'] = 'Shuko LMG';
+	$weapons[5]['name'] = 'Takao T20 Pistol';
+	$weapons[6]['name'] = 'Morretti SR4 Sniper Rifle';
+	$weapons[7]['name'] = 'SCAR 11 AR';
+	$weapons[8]['name'] = 'Mitchell AV-18 AV';
+	$weapons[9]['name'] = 'Turcotte Rapid SMG';
+	$weapons[10]['name'] = 'Bianchi LMG';
+	$weapons[11]['name'] = 'P33 Pereira Pistol';
+	$weapons[12]['name'] = 'BJ-2 Combat Knife';
+	$weapons[13]['name'] = 'Lambert Carbine';
+	$weapons[14]['name'] = 'Zeller-H Advanced Sniper Rifle';
+	$weapons[15]['name'] = 'Baur H-AR';
+	$weapons[16]['name'] = 'Voss L-AR';
+	$weapons[17]['name'] = 'Pilum H-AVR';
+	$weapons[18]['name'] = 'SAAW 86 Anti-Air';
+	$weapons[19]['name'] = 'Ganz HMG';
+	$weapons[20]['name'] = 'Clark 15B Shotgun';
+	$weapons[21]['name'] = 'II-29 Motion Mine';
+	$weapons[22]['name'] = 'FRG-1 Grenade';
+	$weapons[23]['name'] = 'RDX DemoPak';
+	$weapons[24]['name'] = 'APM Mine';
+	$weapons[25]['name'] = 'PK-74 AR-Rocket';
+	$weapons[26]['name'] = 'A12 Enforcer Sentry Gun';
+	$weapons[27]['name'] = 'SD-8 Accipiter';
+	$weapons[28]['name'] = 'Ground Cannon';
+	$weapons[29]['name'] = 'Titan Cannon';
+	$weapons[30]['name'] = 'Turcotte Rapid SMG';
+	$weapons[31]['name'] = 'Explosive Rounds Shotgun';
+	// equipments start
+	$weapons[32]['name'] = 'Equipment Start';
+	$weapons[33]['name'] = 'Shockpaddles';
+	$weapons[34]['name'] = 'Medic Pack';
+	$weapons[35]['name'] = 'Camouflage';
+	$weapons[36]['name'] = 'Flipper Mine';
+	$weapons[37]['name'] = 'Medic Hub';
+	$weapons[38]['name'] = 'Ammo Hub';
+	$weapons[39]['name'] = 'Beacon';
+	$weapons[40]['name'] = 'Sonar';
+	$weapons[41]['name'] = 'Recon Drone';
+	$weapons[42]['name'] = 'EMP Grenade';
+	$weapons[43]['name'] = 'EMP Mine';
+	$weapons[44]['name'] = 'Decoy';
+	$weapons[45]['name'] = 'Throw Medpack';
+	$weapons[46]['name'] = 'Mine Bait';
+	$weapons[47]['name'] = 'Infrantry Sonar';
 
-	for ($i=0; $i<=8; $i++)
+	$totalweap = count($weapons);
+	for ($i=0; $i <= $totalweap; $i++)
 	{
 		$weapons[$i]['time'] 	= $SQLweapons[0]['time'.$i];
 		$weapons[$i]['kills'] 	= $SQLweapons[0]['kills'.$i];
@@ -249,98 +290,98 @@ function getWeaponData($PID, $player)
 		$weapons[$i]['hit'] = $SQLweapons[0]['hit'.$i];
 	}
 
-	$weapons[9]['name'] = 'Knife';
-	$weapons[9]['time'] = $SQLweapons[0]['knifetime'];
-	$weapons[9]['kills'] = $SQLweapons[0]['knifekills'];
-	if ($SQLweapons[0]['knifekills'])
-		$weapons[9]['totalkills'] = (100 * round($SQLweapons[0]['knifekills'] / $player['kills'], 2));
-	else
-		$weapons[9]['totalkills'] = 0;
-	$weapons[9]['deaths'] = $SQLweapons[0]['knifedeaths'];
-	$weapons[9]['fired'] = $SQLweapons[0]['knifefired'];
-	$weapons[9]['hit'] = $SQLweapons[0]['knifehit'];
-	#$weapons[9]['deployed'] = 0;
+	// $weapons[9]['name'] = 'Knife';
+	// $weapons[9]['time'] = $SQLweapons[0]['knifetime'];
+	// $weapons[9]['kills'] = $SQLweapons[0]['knifekills'];
+	// if ($SQLweapons[0]['knifekills'])
+	// 	$weapons[9]['totalkills'] = (100 * round($SQLweapons[0]['knifekills'] / $player['kills'], 2));
+	// else
+	// 	$weapons[9]['totalkills'] = 0;
+	// $weapons[9]['deaths'] = $SQLweapons[0]['knifedeaths'];
+	// $weapons[9]['fired'] = $SQLweapons[0]['knifefired'];
+	// $weapons[9]['hit'] = $SQLweapons[0]['knifehit'];
+	// #$weapons[9]['deployed'] = 0;
 
-	$weapons[10]['name'] = 'Defibrillator';
-	$weapons[10]['time'] = $SQLweapons[0]['shockpadtime'];
-	$weapons[10]['kills'] = $SQLweapons[0]['shockpadkills'];
-	if ($SQLweapons[0]['shockpadkills'])
-		$weapons[10]['totalkills'] = (100 * round($SQLweapons[0]['shockpadkills'] / $player['kills'], 2));
-	else
-		$weapons[10]['totalkills'] = 0;
-	$weapons[10]['deaths'] = $SQLweapons[0]['shockpaddeaths'];
-	$weapons[10]['fired'] = $SQLweapons[0]['shockpadfired'];
-	$weapons[10]['hit'] = $SQLweapons[0]['shockpadhit'];
-	#$weapons[10]['deployed'] = 0;
+	// $weapons[10]['name'] = 'Defibrillator';
+	// $weapons[10]['time'] = $SQLweapons[0]['shockpadtime'];
+	// $weapons[10]['kills'] = $SQLweapons[0]['shockpadkills'];
+	// if ($SQLweapons[0]['shockpadkills'])
+	// 	$weapons[10]['totalkills'] = (100 * round($SQLweapons[0]['shockpadkills'] / $player['kills'], 2));
+	// else
+	// 	$weapons[10]['totalkills'] = 0;
+	// $weapons[10]['deaths'] = $SQLweapons[0]['shockpaddeaths'];
+	// $weapons[10]['fired'] = $SQLweapons[0]['shockpadfired'];
+	// $weapons[10]['hit'] = $SQLweapons[0]['shockpadhit'];
+	// #$weapons[10]['deployed'] = 0;
 
-	$weapons[11]['name'] = 'Claymore';
-	$weapons[11]['time'] = $SQLweapons[0]['claymoretime'];
-	$weapons[11]['kills'] = $SQLweapons[0]['claymorekills'];
-	if ($SQLweapons[0]['claymorekills'])
-		$weapons[11]['totalkills'] = (100 * round($SQLweapons[0]['claymorekills'] / $player['kills'], 2));
-	else
-		$weapons[11]['totalkills'] = 0;
-	$weapons[11]['deaths'] = $SQLweapons[0]['claymoredeaths'];
-	$weapons[11]['fired'] = $SQLweapons[0]['claymorefired'];
-	$weapons[11]['hit'] = $SQLweapons[0]['claymorehit'];
-	#$weapons[11]['deployed'] = 0;
+	// $weapons[11]['name'] = 'Claymore';
+	// $weapons[11]['time'] = $SQLweapons[0]['claymoretime'];
+	// $weapons[11]['kills'] = $SQLweapons[0]['claymorekills'];
+	// if ($SQLweapons[0]['claymorekills'])
+	// 	$weapons[11]['totalkills'] = (100 * round($SQLweapons[0]['claymorekills'] / $player['kills'], 2));
+	// else
+	// 	$weapons[11]['totalkills'] = 0;
+	// $weapons[11]['deaths'] = $SQLweapons[0]['claymoredeaths'];
+	// $weapons[11]['fired'] = $SQLweapons[0]['claymorefired'];
+	// $weapons[11]['hit'] = $SQLweapons[0]['claymorehit'];
+	// #$weapons[11]['deployed'] = 0;
 
-	$weapons[12]['name'] = 'Hand Grenade';
-	$weapons[12]['time'] = $SQLweapons[0]['handgrenadetime'];
-	$weapons[12]['kills'] = $SQLweapons[0]['handgrenadekills'];
-	if ($SQLweapons[0]['handgrenadekills'])
-		$weapons[12]['totalkills'] = (100 * round($SQLweapons[0]['handgrenadekills'] / $player['kills'], 2));
-	else
-		$weapons[12]['totalkills'] = 0;
-	$weapons[12]['deaths'] = $SQLweapons[0]['handgrenadedeaths'];
-	$weapons[12]['fired'] = $SQLweapons[0]['handgrenadefired'];
-	$weapons[12]['hit'] = $SQLweapons[0]['handgrenadehit'];
-	#$weapons[12]['deployed'] = 0;
+	// $weapons[12]['name'] = 'Hand Grenade';
+	// $weapons[12]['time'] = $SQLweapons[0]['handgrenadetime'];
+	// $weapons[12]['kills'] = $SQLweapons[0]['handgrenadekills'];
+	// if ($SQLweapons[0]['handgrenadekills'])
+	// 	$weapons[12]['totalkills'] = (100 * round($SQLweapons[0]['handgrenadekills'] / $player['kills'], 2));
+	// else
+	// 	$weapons[12]['totalkills'] = 0;
+	// $weapons[12]['deaths'] = $SQLweapons[0]['handgrenadedeaths'];
+	// $weapons[12]['fired'] = $SQLweapons[0]['handgrenadefired'];
+	// $weapons[12]['hit'] = $SQLweapons[0]['handgrenadehit'];
+	// #$weapons[12]['deployed'] = 0;
 
-	$weapons[13]['name'] = 'AT Mine';
-	$weapons[13]['time'] = $SQLweapons[0]['atminetime'];
-	$weapons[13]['kills'] = $SQLweapons[0]['atminekills'];
-	if ($SQLweapons[0]['atminekills'])
-		$weapons[13]['totalkills'] = (100 * round($SQLweapons[0]['atminekills'] / $player['kills'], 2));
-	else
-		$weapons[13]['totalkills'] = 0;
-	$weapons[13]['deaths'] = $SQLweapons[0]['atminedeaths'];
-	$weapons[13]['fired'] = $SQLweapons[0]['atminefired'];
-	$weapons[13]['hit'] = $SQLweapons[0]['atminehit'];
-	#$weapons[13]['deployed'] = 0;
+	// $weapons[13]['name'] = 'AT Mine';
+	// $weapons[13]['time'] = $SQLweapons[0]['atminetime'];
+	// $weapons[13]['kills'] = $SQLweapons[0]['atminekills'];
+	// if ($SQLweapons[0]['atminekills'])
+	// 	$weapons[13]['totalkills'] = (100 * round($SQLweapons[0]['atminekills'] / $player['kills'], 2));
+	// else
+	// 	$weapons[13]['totalkills'] = 0;
+	// $weapons[13]['deaths'] = $SQLweapons[0]['atminedeaths'];
+	// $weapons[13]['fired'] = $SQLweapons[0]['atminefired'];
+	// $weapons[13]['hit'] = $SQLweapons[0]['atminehit'];
+	// #$weapons[13]['deployed'] = 0;
 
-	$weapons[14]['name'] = 'C4';
-	$weapons[14]['time'] = $SQLweapons[0]['c4time'];
-	$weapons[14]['kills'] = $SQLweapons[0]['c4kills'];
-	if ($SQLweapons[0]['c4kills'])
-		$weapons[14]['totalkills'] = (100 * round($SQLweapons[0]['c4kills'] / $player['kills'], 2));
-	else
-		$weapons[14]['totalkills'] = 0;
-	$weapons[14]['deaths'] = $SQLweapons[0]['c4deaths'];
-	$weapons[14]['fired'] = $SQLweapons[0]['c4fired'];
-	$weapons[14]['hit'] = $SQLweapons[0]['c4hit'];
-	$weapons[14]['fired'] = 0;
+	// $weapons[14]['name'] = 'C4';
+	// $weapons[14]['time'] = $SQLweapons[0]['c4time'];
+	// $weapons[14]['kills'] = $SQLweapons[0]['c4kills'];
+	// if ($SQLweapons[0]['c4kills'])
+	// 	$weapons[14]['totalkills'] = (100 * round($SQLweapons[0]['c4kills'] / $player['kills'], 2));
+	// else
+	// 	$weapons[14]['totalkills'] = 0;
+	// $weapons[14]['deaths'] = $SQLweapons[0]['c4deaths'];
+	// $weapons[14]['fired'] = $SQLweapons[0]['c4fired'];
+	// $weapons[14]['hit'] = $SQLweapons[0]['c4hit'];
+	// $weapons[14]['fired'] = 0;
 
-	$weapons[15]['name'] = 'Tactical (Flash, Smoke)';
-	$weapons[15]['time'] = $SQLweapons[0]['tacticaltime'];
-	$weapons[15]['kills'] = 0;
-	$weapons[15]['deaths'] = 0;
-	$weapons[15]['fired'] = $SQLweapons[0]['tacticaldeployed'];
-	$weapons[15]['totalkills'] = 0;
+	// $weapons[15]['name'] = 'Tactical (Flash, Smoke)';
+	// $weapons[15]['time'] = $SQLweapons[0]['tacticaltime'];
+	// $weapons[15]['kills'] = 0;
+	// $weapons[15]['deaths'] = 0;
+	// $weapons[15]['fired'] = $SQLweapons[0]['tacticaldeployed'];
+	// $weapons[15]['totalkills'] = 0;
 
-	$weapons[16]['name'] = 'Grappling Hook';
-	$weapons[16]['time'] = $SQLweapons[0]['grapplinghooktime'];
-	$weapons[16]['kills'] = 0;
-	$weapons[16]['deaths'] = $SQLweapons[0]['grapplinghookdeaths'];
-	$weapons[16]['fired'] = $SQLweapons[0]['grapplinghookdeployed'];
-	$weapons[16]['totalkills'] = 0;
+	// $weapons[16]['name'] = 'Grappling Hook';
+	// $weapons[16]['time'] = $SQLweapons[0]['grapplinghooktime'];
+	// $weapons[16]['kills'] = 0;
+	// $weapons[16]['deaths'] = $SQLweapons[0]['grapplinghookdeaths'];
+	// $weapons[16]['fired'] = $SQLweapons[0]['grapplinghookdeployed'];
+	// $weapons[16]['totalkills'] = 0;
 
-	$weapons[17]['name'] = 'Zipline';
-	$weapons[17]['time'] = $SQLweapons[0]['ziplinetime'];
-	$weapons[17]['kills'] = 0;
-	$weapons[17]['deaths'] = $SQLweapons[0]['ziplinedeaths'];
-	$weapons[17]['fired'] = $SQLweapons[0]['ziplinedeployed'];
-	$weapons[17]['totalkills'] = 0;
+	// $weapons[17]['name'] = 'Zipline';
+	// $weapons[17]['time'] = $SQLweapons[0]['ziplinetime'];
+	// $weapons[17]['kills'] = 0;
+	// $weapons[17]['deaths'] = $SQLweapons[0]['ziplinedeaths'];
+	// $weapons[17]['fired'] = $SQLweapons[0]['ziplinedeployed'];
+	// $weapons[17]['totalkills'] = 0;
 
 
 	// Free resultset
@@ -363,7 +404,7 @@ function getWeaponSummary($weapons, $player)
 	$summary['total']['fired'] = 0;
 	$summary['total']['hit'] = 0;
 
-	for ($i=0; $i<=12; $i++)
+	for ($i=0; $i<=31; $i++)
 	{
 		$summary['total']['time'] 	+= $weapons[$i]['time'];
 		$summary['total']['kills'] 	+= $weapons[$i]['kills'];
@@ -410,6 +451,68 @@ function getUnlocksByPID($PID)
 	$result = mysqli_query($GLOBALS['link'], $query) or die('Query failed: ' . mysqli_error($GLOBALS['link']));
 
 	$unlocks = array();
+	
+	$unlocks['111'] = 'n';
+	$unlocks['112'] = 'n';
+	$unlocks['113'] = 'n';
+	$unlocks['114'] = 'n';
+	$unlocks['115'] = 'n';
+	
+	$unlocks['121'] = 'n';
+	$unlocks['122'] = 'n';
+	$unlocks['123'] = 'n';
+	$unlocks['124'] = 'n';
+	$unlocks['125'] = 'n';
+	
+	$unlocks['211'] = 'n';
+	$unlocks['212'] = 'n';
+	$unlocks['213'] = 'n';
+	$unlocks['214'] = 'n';
+	$unlocks['215'] = 'n';
+	
+	$unlocks['221'] = 'n';
+	$unlocks['222'] = 'n';
+	$unlocks['223'] = 'n';
+	$unlocks['224'] = 'n';
+	$unlocks['225'] = 'n';
+	
+	$unlocks['311'] = 'n';
+	$unlocks['312'] = 'n';
+	$unlocks['313'] = 'n';
+	$unlocks['314'] = 'n';
+	$unlocks['315'] = 'n';
+	
+	$unlocks['321'] = 'n';
+	$unlocks['322'] = 'n';
+	$unlocks['323'] = 'n';
+	$unlocks['324'] = 'n';
+	$unlocks['325'] = 'n';
+	
+	$unlocks['411'] = 'n';
+	$unlocks['412'] = 'n';
+	$unlocks['413'] = 'n';
+	$unlocks['414'] = 'n';
+	$unlocks['415'] = 'n';
+	
+	$unlocks['421'] = 'n';
+	$unlocks['422'] = 'n';
+	$unlocks['423'] = 'n';
+	$unlocks['424'] = 'n';
+	$unlocks['425'] = 'n';
+
+	$unlocks['511'] = 'n';
+	$unlocks['512'] = 'n';
+	$unlocks['513'] = 'n';
+	$unlocks['514'] = 'n';
+	$unlocks['515'] = 'n';
+	$unlocks['516'] = 'n';
+
+	$unlocks['521'] = 'n';
+	$unlocks['522'] = 'n';
+	$unlocks['523'] = 'n';
+	$unlocks['524'] = 'n';
+
+
 	while ($row = mysqli_fetch_assoc($result))
 	{
 		$unlocks[$row['kit']] = $row['state'];
@@ -431,7 +534,7 @@ function getEquipmentSummary($weapons, $player)
 	$summary['total']['ratio'] = 0;
 	$summary['total']['fired'] = 0;
 
-	for ($i=9; $i<=16; $i++)	// equipment = 9-16
+	for ($i=32; $i<=47; $i++)	// equipment = 32-47
 	{
 		$summary['total']['time'] 	+= $weapons[$i]['time'];
 		$summary['total']['kills'] 	+= $weapons[$i]['kills'];

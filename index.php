@@ -128,12 +128,12 @@ if($GO == "0" && $PID)
 		//$enemies 		= getFavouriteEnemies($PID); // receive enemie data
 		//$armies 		= getArmyData($PID); // receive army data
 		//$armySummary 	= getArmySummaries($armies); // retrieve Army summary
-		//$unlocks 		= getUnlocksByPID($PID);	// retrieve unlock data
+		$unlocks 		= getUnlocksByPID($PID);	// retrieve unlock data
 		//$vehicles 		= getVehicleData($PID);	// retrieve vehivle data
 		//$vehicleSummary = getVehicleSummaries($vehicles); // retrieve Vehicle summary
-		//$weapons 		= getWeaponData($PID, $player); // retrieve Weapon data
-		//$weaponSummary 	= getWeaponSummary($weapons, $player); // retrieve weapon summary
-		//$equipmentSummary = getEquipmentSummary($weapons, $player); // retrieve equipment summary
+		$weapons 		= getWeaponData($PID, $player); // retrieve Weapon data
+		$weaponSummary 	= getWeaponSummary($weapons, $player); // retrieve weapon summary
+		$equipmentSummary = getEquipmentSummary($weapons, $player); // retrieve equipment summary
 		$kits 			= getKitData($PID); // retrieve kit data
 		$kitSummary 	= getKitSummary($kits, $player); // retrieve kits summary
 		$maps 			= getMapData($PID);
@@ -320,6 +320,9 @@ elseif(strcasecmp($GO, 'servers') == 0 && $SID)
 		if ($server['data']) {
 			$server['data'] = getGamespyDataWithPlayerRanks($server['data']);
 		}
+
+		// $query  = "";
+		// add here TODO
 
 		// Include our template file
 		include( TEMPLATE_PATH .'server.php');

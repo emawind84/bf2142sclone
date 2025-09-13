@@ -21,7 +21,7 @@ $template = '
 	<div id="page-2">
 	
 		<h1 id="page-title">
-			<img src="' . $ROOT . 'game-images/ranks/header/rank_' . $player['rank'] . '.png" alt="" />' . esc_attr((RANKING_PIDS_AS_NAMES ? $player['id'] : $player['name'])) . '<small> ' . getRankByID($player['rank']) . '</small>
+			<img src="' . $ROOT . 'game-images/ranks/progress/rank_' . $player['rank'] . '.png" style="width:48px;" alt="" />' . esc_attr((RANKING_PIDS_AS_NAMES ? $player['id'] : $player['name'])) . '<small> ' . getRankByID($player['rank']) . '</small>
 		</h1>
 
 		<div id="page-3">
@@ -39,12 +39,12 @@ $template = '
 			<div id="prefCol">
 				<div id="prefers">
 					<img class="solider" src="';
-					if (file_exists(getcwd() . '/game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '_' . $playerFavorite['weapon'] . '.jpg'))
-						$template .= $ROOT . 'game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '_' . $playerFavorite['weapon'] . '.jpg';
+					if (file_exists(getcwd() . '/game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png'))
+						$template .= $ROOT . 'game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png';
 					else
-						$template .= $ROOT . 'game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '_5.jpg'; // show pistol...
+						$template .= $ROOT . 'game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png'; // show pistol...
 					$template .= '" alt="' . esc_attr((RANKING_PIDS_AS_NAMES ? $player['id'] : $player['name'])) . ' - ' . getArmyByID($playerFavorite['army']) . '" />
-					<img class="weapon" src="' . $ROOT . 'game-images/weapons/weapon_' . $playerFavorite['weapon'] . '.jpg" alt="' . $weapons[$playerFavorite['weapon']]['name'] . '" />
+					<img class="weapon" src="' . $ROOT . 'game-images/weapons/weapon_' . $playerFavorite['weapon'] . '.png" alt="' . $weapons[$playerFavorite['weapon']]['name'] . '" />
 					<img class="vehicle" src="' . $ROOT . 'game-images/vehicles/vehicles_' . $playerFavorite['vehicle'] . '.jpg" alt="' . getVehicleByID($playerFavorite['vehicle']) . '" />
 					<img class="kit" src="' . $ROOT . 'game-images/kits/kit_' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png" alt="' . getKitByID($playerFavorite['kit']) . '" width="160" height="160" style="width:64px;height:64px;object-fit: contain;" />
 					<img class="map" src="' . $ROOT . 'game-images/maps/map_' . $playerFavorite['map'] . '.jpg" alt="' . getMapByID( $playerFavorite['map'] ) . '" />
@@ -467,6 +467,61 @@ $template = '
 							<td>' . round($vehicleSummary['average']['rk'],0) . '</td>
 						</tr>
 					</table>
+
+					<table border="0" cellspacing="0" cellpadding="0" id="equipment" class="stat sortable">
+						<tr>
+							<th>Equipment</th>
+							<th>Time</th>
+							<th>Kills</th>
+							<th>Deaths</th>
+							<th>Ratio</th>
+							<th>Usage</th>
+						</tr>';
+						#<!-- add  class="favorite" -->
+
+						for ($i=32; $i<=47; $i++)
+						{
+							$fav = $playerFavorite['equipment'];
+							$template .= ($fav == $i) ? '<tr class="favorite">' : '<tr>';
+							$template .= '
+									<td>'.$weapons[$i]['name'].'</td>
+									<td nowrap="nowrap" title="'. $weapons[$i]['time'] .'">'. intToTime($weapons[$i]['time']) .'</td>
+									<td><span class="abbr" alt="Accounts for '. round($weapons[$i]['totalkills'], 2) .'% of all kills">'. @number_format($weapons[$i]['kills']) .'</span></td>
+									<td>'. @number_format($weapons[$i]['deaths']) .'</td>
+									<td>';
+							if ($weapons[$i]['deaths'])
+								$template .= round($weapons[$i]['kills']/$weapons[$i]['deaths'],2);
+							else
+								$template .= $weapons[$i]['kills'];	
+							$template .= '
+									</td>
+									<td>'. @number_format($weapons[$i]['fired']) .'</td>
+								</tr>';
+						}
+						$template .= '
+					
+						<tr class="totals sortbottom">			<td>Total</td>
+							<td nowrap="nowrap">' . intToTime($equipmentSummary['total']['time']) . '</td>
+							<td>
+								<span class="abbr" alt="Accounts for ' . round($equipmentSummary['total']['totalkills'], 2) . '% of all kills">
+									' . @number_format($equipmentSummary['total']['kills']) . '
+								</span>
+							</td>
+							<td>' . @number_format($equipmentSummary['total']['deaths']) . '</td>
+							<td>' . round($equipmentSummary['total']['ratio'],2) . '</td>
+							<td>' . @number_format(round($equipmentSummary['total']['fired'],0)) . '</td>
+						</tr>
+						<tr class="averages sortbottom">
+							<td>Averages</td>
+							<td nowrap="nowrap">' . intToTime($equipmentSummary['average']['time']) . '</td>
+							<td>' . @number_format(round($equipmentSummary['average']['kills'],0)) . '</td>
+							<td>' . @number_format(round($equipmentSummary['average']['deaths'],0)) . '</td>
+							<td>' . round($equipmentSummary['average']['ratio'],2) . '</td>
+							<td>' . @number_format(round($equipmentSummary['average']['fired'],0)) . '</td>
+						</tr>
+					</table>
+			
+					
 				</div><!-- END COL LEFT -->
 			
 				<!-- COL RIGHT -->
@@ -555,7 +610,7 @@ $template = '
 						</tr>';
 						
 						// add  class="favorite" later
-						for ($i=0; $i <= 10; $i++)
+						for ($i=0; $i <= 31; $i++)
 						{
 							$fav = $playerFavorite['weapon'];
 							$template .= ($fav == $i) ? '<tr class="favorite">' : '<tr>';
@@ -656,59 +711,6 @@ $template = '
 								@number_format(round($weaponSummary['average']['fired'],0)) . ', Hits: ' . 
 								@number_format(round($weaponSummary['average']['hit'],0)) . 
 								'">' . $weaponSummary['average']['acc'] . '%</span></td>
-						</tr>
-					</table>
-			
-					<table border="0" cellspacing="0" cellpadding="0" id="equipment" class="stat sortable">
-						<tr>
-							<th>Equipment</th>
-							<th>Time</th>
-							<th>Kills</th>
-							<th>Deaths</th>
-							<th>Ratio</th>
-							<th>Usage</th>
-						</tr>';
-						#<!-- add  class="favorite" -->
-
-						for ($i=9; $i<=17; $i++)
-						{
-							$fav = $playerFavorite['equipment'];
-							$template .= ($fav == $i) ? '<tr class="favorite">' : '<tr>';
-							$template .= '
-									<td>'.$weapons[$i]['name'].'</td>
-									<td nowrap="nowrap" title="'. $weapons[$i]['time'] .'">'. intToTime($weapons[$i]['time']) .'</td>
-									<td><span class="abbr" alt="Accounts for '. round($weapons[$i]['totalkills'], 2) .'% of all kills">'. @number_format($weapons[$i]['kills']) .'</span></td>
-									<td>'. @number_format($weapons[$i]['deaths']) .'</td>
-									<td>';
-							if ($weapons[$i]['deaths'])
-								$template .= round($weapons[$i]['kills']/$weapons[$i]['deaths'],2);
-							else
-								$template .= $weapons[$i]['kills'];	
-							$template .= '
-									</td>
-									<td>'. @number_format($weapons[$i]['fired']) .'</td>
-								</tr>';
-						}
-						$template .= '
-					
-						<tr class="totals sortbottom">			<td>Total</td>
-							<td nowrap="nowrap">' . intToTime($equipmentSummary['total']['time']) . '</td>
-							<td>
-								<span class="abbr" alt="Accounts for ' . round($equipmentSummary['total']['totalkills'], 2) . '% of all kills">
-									' . @number_format($equipmentSummary['total']['kills']) . '
-								</span>
-							</td>
-							<td>' . @number_format($equipmentSummary['total']['deaths']) . '</td>
-							<td>' . round($equipmentSummary['total']['ratio'],2) . '</td>
-							<td>' . @number_format(round($equipmentSummary['total']['fired'],0)) . '</td>
-						</tr>
-						<tr class="averages sortbottom">
-							<td>Averages</td>
-							<td nowrap="nowrap">' . intToTime($equipmentSummary['average']['time']) . '</td>
-							<td>' . @number_format(round($equipmentSummary['average']['kills'],0)) . '</td>
-							<td>' . @number_format(round($equipmentSummary['average']['deaths'],0)) . '</td>
-							<td>' . round($equipmentSummary['average']['ratio'],2) . '</td>
-							<td>' . @number_format(round($equipmentSummary['average']['fired'],0)) . '</td>
 						</tr>
 					</table>
 			
@@ -836,9 +838,9 @@ $template = '
 								$weapon = getUnlockByID($uid);
 								$template .=  '
 									<div class="unlock-inline" onmouseover="show_mine(this);" onmouseout="hide_mine(this);">
-											<a href="http://wiki.bf2s.com/weapons/unlocks/'.strtolower($weapon).'"><img src="'.$ROOT.'spacer.gif" style="background: url(\''.$ROOT.'game-images/unlocks/'.$unlocks[$uid] .'/'.$uid.'.png\');" width="115" height="33" alt="" /></a>
+											<a href="http://wiki.bf2s.com/weapons/unlocks/'.strtolower($weapon).'"><img style="width:auto;height:44px;" src="'.$ROOT. 'game-images/unlocks/'.$unlocks[$uid] .'/'.$uid.'.png" alt="" /></a>
 											<div class="unlock-pop dir-left">
-												<img src="'.$ROOT.'spacer.gif" style="background: url(\''.$ROOT.'game-images/unlocks/full/'.$uid.'.jpg\');" width="128" height="128" alt="" />
+												<img style="width:auto;height: 80px;" src="'.$ROOT.'game-images/unlocks/full/'.$uid.'_hi.png" alt="" />
 												<strong>Click for more about the '.$weapon.'</strong>
 											</div>
 										</div>';
@@ -860,8 +862,8 @@ $template = '
 							{
 								$awardlevel = getBadgeLevel($PlayerAwards[$i]);
 								$template .= '
-								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
+								<div class="award-inline badge" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
+									<img style="width:80px;height:auto;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($awardlevel>0)
 										$template .= 'front/badge_front_'.$PlayerAwards[$i][$awardlevel][AWD].'_'.$awardlevel;
 									else
@@ -901,8 +903,8 @@ $template = '
 							{
 
 								$template .= '
-								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
+								<div class="award-inline medal" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
+									<img style="width:48px;height:auto;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($PlayerAwards[$i][0][LEVEL]>0)
 										$template .= 'front/medal_front_'.$PlayerAwards[$i][0][AWD];
 									else
@@ -942,8 +944,8 @@ $template = '
 							{
 
 								$template .= '
-								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
+								<div class="award-inline ribbon" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
+									<img style="width:100px;height:auto;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($PlayerAwards[$i][0][LEVEL]>0)
 										$template .= 'front/ribbons_front_'.$PlayerAwards[$i][0][AWD];
 									else
@@ -982,8 +984,8 @@ $template = '
 							{
 
 								$template .= '
-								<div class="award-inline" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
-									<img style="width:42px;height:42px;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
+								<div class="award-inline pin" onMouseOver="show_mine(this);" onMouseOut="hide_mine(this);">
+									<img style="width:50px;height:auto;object-fit: contain;" src="' . $ROOT . 'game-images/awards/';
 									if ($PlayerAwards[$i][0][LEVEL]>0)
 										$template .= 'front/pin_front_'.$PlayerAwards[$i][0][AWD];
 									else
@@ -1002,7 +1004,9 @@ $template = '
 											<strong>'.$PlayerAwards[$i][0][NAME].'</strong>
 										</p>
 										<ul>
-											<li>First received: '.earned($PlayerAwards[$i][0][EARNED]).'</li>
+											<li>First received: '.earned($PlayerAwards[$i][0][FIRST]).'</li>
+											<li>Last awarded: '.earned($PlayerAwards[$i][0][EARNED]).'</li>
+											<li>Total awards: '.$PlayerAwards[$i][0][LEVEL].'</li>
 										</ul>
 									</div>
 								</div>';
@@ -1026,7 +1030,7 @@ $template = '
 						foreach($RANK_INFO as $key => $value)
 						{
 							$template .= '
-							<img src="' . $ROOT . 'game-images/ranks/progress/rank_'.$value['rank'].'.png" alt="" style="float: left; margin: 0 5px 5px 0;width:83px;height:83px;object-fit:contain;" height="110" width="110" />			
+							<img src="' . $ROOT . 'game-images/ranks/progress/rank_'.$value['rank'].'.png" alt="" style="float: left; margin: 0 5px 5px 0;width:auto;height:65px;object-fit:contain;" height="110" width="110" />			
 							<p>
 								<strong>Next Rank: '.$value['title'].'</strong>
 							</p>
