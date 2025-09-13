@@ -279,6 +279,8 @@ elseif(strcasecmp($GO, 'servers') == 0 && !$SID)
 		$serversWithGamespyData = array();
 		foreach ($servers as $s) {
 			$s['data'] = loadGamespyData($s['ip'], $s['queryport']);
+			if (isset($s['data']['server']))
+				$s['data']['server']['bf2142_ranked'] = $s['ranked'];
 			$serversWithGamespyData[] = $s;
 		}
 		$servers = $serversWithGamespyData;
@@ -320,9 +322,6 @@ elseif(strcasecmp($GO, 'servers') == 0 && $SID)
 		if ($server['data']) {
 			$server['data'] = getGamespyDataWithPlayerRanks($server['data']);
 		}
-
-		// $query  = "";
-		// add here TODO
 
 		// Include our template file
 		include( TEMPLATE_PATH .'server.php');
