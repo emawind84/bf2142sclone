@@ -529,17 +529,13 @@ $template = '
 					<table border="0" cellspacing="0" cellpadding="0" id="expansion" class="stat">
 						<tr>
 							<th>Expansion</th>
-							<th>BF2</th>
-							<th>SF</th>
-							<th>EF</th>
-							<th>AF</th>
+							<th>BF2142</th>
+							<th>BF2142s.p.ex</th>
 						</tr>
 						<tr>
 							<td>Time</td>
-							<td nowrap="nowrap" title="'.getExpasionTimeByName($PID, 'bf').'">'.intToTime(getExpasionTimeByName($PID, 'bf')).'</td>
-							<td nowrap="nowrap" title="'.getExpasionTimeByName($PID, 'sf').'">'.intToTime(getExpasionTimeByName($PID, 'sf')).'</td>
-							<td nowrap="nowrap" title="'.getExpasionTimeByName($PID, 'ef').'">'.intToTime(getExpasionTimeByName($PID, 'ef')).'</td>
-							<td nowrap="nowrap" title="'.getExpasionTimeByName($PID, 'af').'">'.intToTime(getExpasionTimeByName($PID, 'af')).'</td>
+							<td nowrap="nowrap" title="'.getExpasionTimeByName($PID, 'bf2142').'">'.intToTime(getExpasionTimeByName($PID, 'bf2142')).'</td>
+							<td nowrap="nowrap" title="'.getExpasionTimeByName($PID, 'bf2142spex').'">'.intToTime(getExpasionTimeByName($PID, 'bf2142spex')).'</td>
 						</tr>
 					</table>
 

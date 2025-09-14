@@ -129,8 +129,8 @@ if($GO == "0" && $PID)
 		//$armies 		= getArmyData($PID); // receive army data
 		//$armySummary 	= getArmySummaries($armies); // retrieve Army summary
 		$unlocks 		= getUnlocksByPID($PID);	// retrieve unlock data
-		//$vehicles 		= getVehicleData($PID);	// retrieve vehivle data
-		//$vehicleSummary = getVehicleSummaries($vehicles); // retrieve Vehicle summary
+		$vehicles 		= getVehicleData($PID);	// retrieve vehivle data
+		$vehicleSummary = getVehicleSummaries($vehicles); // retrieve Vehicle summary
 		$weapons 		= getWeaponData($PID, $player); // retrieve Weapon data
 		$weaponSummary 	= getWeaponSummary($weapons, $player); // retrieve weapon summary
 		$equipmentSummary = getEquipmentSummary($weapons, $player); // retrieve equipment summary
@@ -321,6 +321,8 @@ elseif(strcasecmp($GO, 'servers') == 0 && $SID)
 		$server['data'] = loadGamespyData($server['ip'], $server['queryport']);
 		if ($server['data']) {
 			$server['data'] = getGamespyDataWithPlayerRanks($server['data']);
+			if (isset($server['data']['server']))
+				$server['data']['server']['bf2142_ranked'] = $server['ranked'];
 		}
 
 		// Include our template file

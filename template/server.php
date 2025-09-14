@@ -151,7 +151,7 @@ $template = '
 								<td class="subheading" colspan="999">SERVER MESSAGE</td>
 							</tr>
 							<tr>
-								<td style="height: 50px;  vertical-align: top;" colspan="999">' . ($s['data'] ? esc_attr($s['data']['server']['bf2142_sponsortext']) : '') . '</td>
+							<td style="height: 50px;  vertical-align: top;" colspan="999">' . $sponsortext . '</td>
 							</tr>
 						</tbody>
 						</table>

@@ -67,14 +67,15 @@ $template = '
 								<td>-</td>
 							</tr>';
 								} else {
-									$template .= '<span style="display: inline-block; vertical-align: middle; width: 10px; height: 10px; border: 0px solid #000; border-radius: 50%; background: #5add65;" alt="ON"></span>';
+									//$template .= '<span style="display: inline-block; vertical-align: middle; width: 10px; height: 10px; border: 0px solid #000; border-radius: 50%; background: #5add65;" alt="ON"></span>';
+									
 									$serverLoad = $s['data']['server']['numplayers'] / $s['data']['server']['maxplayers'];
 									if ($serverLoad >= 0.66) {
-										$template .= '<img src="game-images/serverIcons/Serverload_red.png" alt="High Load" />';
+										$template .= '<img src="game-images/serverIcons/latencyRed.png" alt="High Load" />';
 									} else if ($serverLoad >= 0.33) {
-										$template .= '<img src="game-images/serverIcons/Serverload_orange.png" alt="Medium Load" />';
+										$template .= '<img src="game-images/serverIcons/latencyOrange.png" alt="Medium Load" />';
 									} else {
-										$template .= '<img src="game-images/serverIcons/Serverload_green.png" alt="Low Load" />';
+										$template .= '<img src="game-images/serverIcons/latencyGreen.png" alt="Low Load" />';
 									}
 
 									if (preg_match('/^linux/', $s['data']['server']['bf2142_os'])) {
@@ -96,38 +97,38 @@ $template = '
 										$template .= '<img src="game-images/serverIcons/unknown_mod.png" alt="unknown_mod" />';
 									}
 
-									if ($s['data']['server']['bf2142_ranked']) {
-										$template .= '<img src="game-images/serverIcons/Ranked.png" alt="Ranked" />';
-									} else {
-										$template .= '<img src="game-images/serverIcons/blank.png" alt="Unranked" />';
-									}
-
 									if ($s['data']['server']['bf2142_autorec']) {
 										$template .= '<img src="game-images/serverIcons/battlerec.png" alt="BattleRecorder On" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="BattleRecorder Off" />';
 									}
 
+									if ($s['data']['server']['bf2142_ranked']) {
+										$template .= '<img src="game-images/serverIcons/rank_icon.png" alt="Ranked" />';
+									} else {
+										$template .= '<img src="game-images/serverIcons/rankrestricted_icon.png" alt="Unranked" />';
+									}
+
 									if ($s['data']['server']['bf2142_voip']) {
-										$template .= '<img src="game-images/serverIcons/battleCom.png" alt="BattleCommo On" />';
+										$template .= '<img src="game-images/serverIcons/VOIP_icon.png" alt="BattleCommo On" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="BattleCommo Off" />';
 									}
 
 									if ($s['data']['server']['bf2142_anticheat']) {
-										$template .= '<img src="game-images/serverIcons/punkBuster.png" alt="Punkbuster On" />';
+										$template .= '<img src="game-images/serverIcons/punk_icon.png" alt="Punkbuster On" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="Punkbuster Off" />';
 									}
 									
 									if ($s['data']['server']['bf2142_pure']) {
-										$template .= '<img src="game-images/serverIcons/PureContent.png" alt="Pure" />';
+										$template .= '<img src="game-images/serverIcons/TV_icon.png" alt="Pure" />';
 									} else {
-										$template .= '<img src="game-images/serverIcons/blank.png" alt="Not Pure" />';
+										$template .= '<img src="game-images/serverIcons/TV_icon_red.png" alt="Not Pure" />';
 									}
 									
 									if ($s['data']['server']['password']) {
-										$template .= '<img src="game-images/serverIcons/PasswordEnabled.png" alt="PasswordEnabled" />';
+										$template .= '<img src="game-images/serverIcons/lock_icon.png" alt="PasswordEnabled" />';
 									} else {
 										$template .= '<img src="game-images/serverIcons/blank.png" alt="No Password" />';
 									}
