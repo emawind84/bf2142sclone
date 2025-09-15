@@ -124,8 +124,8 @@ if($GO == "0" && $PID)
 			header("Location: /"); // Redirect to home, since there's no such player
 			exit();
 		}
-		//$victims 		= getFavouriteVictims($PID); // receive victim data
-		//$enemies 		= getFavouriteEnemies($PID); // receive enemie data
+		$victims 		= getFavouriteVictims($PID); // receive victim data
+		$enemies 		= getFavouriteEnemies($PID); // receive enemie data
 		//$armies 		= getArmyData($PID); // receive army data
 		//$armySummary 	= getArmySummaries($armies); // retrieve Army summary
 		$unlocks 		= getUnlocksByPID($PID);	// retrieve unlock data
@@ -138,7 +138,7 @@ if($GO == "0" && $PID)
 		$kitSummary 	= getKitSummary($kits, $player); // retrieve kits summary
 		$maps 			= getMapData($PID);
 		$mapSummary 	= getMapSummary($maps);
-		$TheaterData 	= getTheaterData($PID);  // retrueve Theater Data
+		//$TheaterData 	= getTheaterData($PID);  // retrueve Theater Data
 		//$playerFavorite = getPlayerFavorites($weapons, $vehicles, $kits, $armies, $maps, $TheaterData); // get player summary
 		$playerFavorite = array(
 			'weapon' => $player['fw'],

@@ -373,7 +373,7 @@ $template = '
 						</tr>
 					</table>
 
-					<table id="theater" class="stat sortable" border="0" cellpadding="0" cellspacing="0">
+					<table id="theater" class="stat sortable" border="0" cellpadding="0" cellspacing="0" style="display:none;">
 						<tbody>
 							<tr>
 								<th><a href="#" class="sortheader" onclick="ts_resortTable(this);return false;">Theater<span class="sortarrow">&nbsp;&nbsp;&nbsp;</span></a></th>

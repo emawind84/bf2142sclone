@@ -23,6 +23,7 @@ IndexIgnore *
     RewriteRule ^logs/ - [R=403,L,NC]
 	RewriteRule ^template/ - [R=403,L,NC]
     RewriteRule ^.*\.(txt)$ - [R=403,L,NC]
+    RewriteRule ^.*\.(disabled)$ - [R=403,L,NC]
 
     # Don't redirect direct links to non-existent files or directories to the index.php
     RewriteCond %{REQUEST_FILENAME} !-f

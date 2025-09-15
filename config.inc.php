@@ -14,7 +14,7 @@ function defineVar($name, $default) {
 
 // Database connection information
 defineVar('DBIP', '127.0.0.1');
-defineVar('DBNAME', 'bf2142stats_dev');
+defineVar('DBNAME', 'bf2142stats');
 defineVar('DBLOGIN', 'bf2142stats');
 defineVar('DBPASSWORD', 'bf2142');
 
