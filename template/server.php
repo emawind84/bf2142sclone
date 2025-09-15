@@ -270,8 +270,6 @@ $template = '
 			<li class="' . ($GO == 'servers' ? 'current' : '') . '"><a href="'. $ROOT .'?go=servers">Servers</a></li>
 			<li class="' . ($GO == 'my-leaderboard' ? 'current' : '') . '"><a href="'. $ROOT .'?go=my-leaderboard">My Leader Board</a></li>
 			<li class="' . ($GO == 'currentranking' ? 'current' : '') . '"><a href="'. $ROOT .'?go=currentranking">Rankings</a></li>
-			<li class="' . ($GO == 'ubar' ? 'current' : '') . '"><a href="'. $ROOT .'?go=ubar">UBAR</a></li>
-			<li><a href="http://wiki.bf2s.com/">Wiki</a></li>
 		</ul>
 		
 		<form action="'.$ROOT.'?go=search" method="post" id="getstats">
