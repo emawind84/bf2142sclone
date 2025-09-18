@@ -210,7 +210,7 @@ $template = '
 							$team = strtolower($s['data']['server']["bf2142_$t"]);
 							$template .= '
 						<div style="display: inline-block; width: 50%; vertical-align: top;">
-							<div style="display: block; border: 1px solid #111; padding: 5px; background: #383c33; color: #fff; font: normal 17px Verdana; text-align: center;">' . esc_attr(strtoupper(getArmyName($team))) . '</div>
+							<div style="display: block;border: 1px solid #111;padding: 5px;background: #d1d1d1;color: #323232;font: normal 17px Verdana;text-align: center;">' . esc_attr(strtoupper(getArmyName($team))) . '</div>
 							<img style="display: block; width: 100%; height: auto;" src="game-images/bigflags/bigflag_' . esc_attr($team) . '.png"/>
 							<table border="0" cellspacing="0" cellpadding="0" style="width: 100%; margin: 0;" class="stat server-scoreboard-stat sortable">
 							<tbody>

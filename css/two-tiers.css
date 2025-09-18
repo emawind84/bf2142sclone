@@ -1,12 +1,6 @@
-a {
-color: #F6B620;
-text-decoration: none;
-border-bottom: 1px dotted #595853;
-}
+a {color: #a70000;text-decoration: none;border-bottom: 1px dotted #595853;}
 
-a:hover {
-border-bottom: 1px dotted #FFEE40;
-}
+a:hover {border-bottom: 1px dotted #000000;border-bottom-style: dashed;}
 
 a img {
 border: 0;
@@ -16,12 +10,7 @@ hr {
 display: none;
 }
 
-html, body {
-margin: 0;
-padding: 0;
-color: #c0bcb0;
-font: normal 11px Verdana;
-}
+html, body {margin: 0;padding: 0;color: #3c3c3c;font: normal 11px Verdana;}
 
 body{
 text-align: center;
@@ -137,11 +126,7 @@ font-size: 9px;
 }
 
 
-#footer {
-clear: both;
-text-align: center;
-padding: 30px 0;
-}
+#footer {clear: both;text-align: center;padding: 30px 0;color: #3e3d3d;}
 
 body.home #footer {
 padding: 30px 430px;
@@ -315,9 +300,9 @@ font-weight: bold;
 font-size: 10px;
 }
 
-body.inner #navitems li.current a {
-border-bottom: 1px dotted #FFEE40;
-}
+body.inner #navitems li.current a {border-bottom: 1px dotted #434343;border-bottom-style: solid;}
+
+a {}
 
 body.inner #getstats {
 position: absolute;
@@ -336,34 +321,12 @@ float: left;
 margin-right: 5px;
 }
 
-body.inner #getstats label {
-color: #c2bfb6;
-font: bold 10px Verdana, sans-serif;
-display: block;
-border: 0;
-padding-top: 1px;
-}
+body.inner #getstats label {color: #242424;font: bold 10px Verdana, sans-serif;display: block;border: 0;padding-top: 1px;}
 
 
-body.inner #getstats input {
-background: transparent;
-color: #fff;
-font: bold 10px Verdana, sans-serif;
-width: 100px;
-padding: 1px;
-height: 11px;
-border-bottom: 1px dotted #c2bfb6;
-}
+body.inner #getstats input {background: transparent;color: #000000;font: bold 10px Verdana, sans-serif;width: 100px;padding: 1px;height: 11px;border-bottom: 1px dotted #000000;}
 
-body.inner #getstats input.btn {
-background: transparent;
-color: #fff;
-font: bold 10px Verdana, sans-serif;
-border: 1px solid #bbb;
-width: 30px;
-padding: 0;
-height: 16px;
-}
+body.inner #getstats input.btn {background: transparent;color: #1a1a1a;font: bold 10px Verdana, sans-serif;border: 1px solid #757575;width: 30px;padding: 0;height: 16px;}
 
 body.inner #getstats input:hover,
 body.inner #getstats input:active,
@@ -404,11 +367,12 @@ margin:0;
 padding:0;
 margin-top: -15px;
 margin-left: -5px;
+margin-right: 5px;
 }
 
-body.inner h1 small {
+/* body.inner h1 small {
 font-size: 14px;
-}
+} */
 
 body.inner #content {
 padding: 10px;
@@ -437,7 +401,7 @@ width: 960px;
 
 table.stat th {
 padding: 4px 4px;
-background: #383c33;
+background: #262626;
 border: 0;
 border-bottom: 1px solid #111;
 text-align: left;
@@ -459,38 +423,23 @@ background: #5c5f52;
 border-bottom: 1px solid #222c22;
 }
 
-table.stat tr > td {
-background: #484b3d;
-border-right: 1px solid #333;
-font-weight: bold;
-}
+table.stat tr > td {background: #848484;border-right: 1px solid #333;font-weight: bold;}
 
 table.stat td + td {
-background: #5c5f52;
+background: #5c5c5c;
 border-right: 0;
 font-weight: normal;
 }
 
 table.stat tr.favorite > td,
-table.stat tr.favorite > td + td {
-background: #676a5e; 
-border: 2px solid #333;
-border-top: 1px solid #999;
-border-right: 0;
-border-left: 0;
-padding: 5px 4px;
-}
+table.stat tr.favorite > td + td {background: #a9a9a9;border: 2px solid #333;border-top: 1px solid #999;border-right: 0;border-left: 0;padding: 5px 4px;color: black;}
 
 
 table.stat tr.totals> td,
-table.stat tr.averages> td {
-background: #3d4334;
-}
+table.stat tr.averages> td {background: #414140;}
 
 table.stat tr.totals> td + td,
-table.stat tr.averages> td + td {
-background: #4f5546;
-}
+table.stat tr.averages> td + td {background: #4c4c4c;}
 
 table.stat tr th,
 table.stat tr td{
@@ -522,7 +471,7 @@ table.basic-stat th + th {
 table.basic-stat td {
 padding: 2px 4px;
 border: 0;
-background: #5c5f52;
+background: #5c5c5c;
 }
 
 table.basic-stat tr > td {
@@ -583,7 +532,7 @@ table.servers img {
 	width: 25%;
 }
 .server-stat td.column-key {
-	background: #484b3d;
+	background: #7b7b7b;
 	border-right: 1px solid #333;
 	font-weight: bold;
 }
@@ -591,7 +540,7 @@ table.servers img {
 .server-stat td.subheading {
 	padding: 4px 4px;
 	font: normal 17px Verdana;
-	background: #383c33;
+	background: #3c3c3c;
 }
 
 .server-scoreboard-stat img {
@@ -664,7 +613,7 @@ height: 274px;
 
 #profile {
 width: 740px;
-border-top: 2px solid #474642;
+border-top: 2px solid #7a7a7a;
 }
 
 /* the following selector is Opera only */
@@ -676,14 +625,14 @@ border-top: 2px solid #474642;
 
 #profile td {
 width: 33%;
-border-right: 6px solid #474642;
+border-right: 6px solid #7a7a7a;
 }
 
 #profile th {
 width: 33%;
 background: #070602;
-border-bottom: 2px solid #474642;
-border-right: 6px solid #474642;
+border-bottom: 2px solid #7a7a7a;
+border-right: 6px solid #7a7a7a;
 padding: 10px 0;
 text-align: center;
 }
@@ -713,20 +662,9 @@ border: 1px solid #111;
 border-top: 0;
 }
 
-#profile table td {
-width: 50%;
-padding: 3px 4px;
-border: 0;
-border-top: 1px solid #222c22;
-background: #5c5f52;
-}
+#profile table td {width: 50%;padding: 3px 4px;border: 0;border-top: 1px solid #222c22;background: #6b6b6b;}
 
-#profile table th {
-padding: 4px 0;
-background: #383c33;
-border: 0;
-border-top: 1px solid #222c22;
-}
+#profile table th {padding: 4px 0;background: #2b2b2b;border: 0;border-top: 1px solid #222c22;}
 
 #profile table td + td {
 text-align: right;
@@ -1004,7 +942,7 @@ padding: 0;
 }
 
 #tta .progressbar {
-width: 800px; 
+width: 830px; 
 }
 
 .progressbar div {

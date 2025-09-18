@@ -44,8 +44,8 @@ $template = '
 					else
 						$template .= $ROOT . 'game-images/soldiers/' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png'; // show pistol...
 					$template .= '" alt="' . esc_attr((RANKING_PIDS_AS_NAMES ? $player['id'] : $player['name'])) . ' - ' . getArmyByID($playerFavorite['army']) . '" />
-					<img class="weapon" src="' . $ROOT . 'game-images/weapons/weapon_' . $playerFavorite['weapon'] . '.png" alt="' . $weapons[$playerFavorite['weapon']]['name'] . '" />
-					<img class="vehicle" src="' . $ROOT . 'game-images/vehicles/vehicles_' . $playerFavorite['vehicle'] . '.jpg" alt="' . getVehicleByID($playerFavorite['vehicle']) . '" />
+					<img class="weapon" src="' . $ROOT . 'game-images/weapons/weapon_' . $playerFavorite['weapon'] . '.png" alt="' . $weapons[$playerFavorite['weapon']]['name'] . '" width="160" height="160" style="width:64px;height:64px;object-fit: contain;" />
+					<img class="vehicle" src="' . $ROOT . 'game-images/vehicles/vehicles_' . $playerFavorite['army'] . '_' . $playerFavorite['vehicle'] . '.png" alt="' . getVehicleByID($playerFavorite['vehicle']) . '" width="160" height="160" style="width:64px;height:64px;object-fit: contain;" />
 					<img class="kit" src="' . $ROOT . 'game-images/kits/kit_' . $playerFavorite['army'] . '_' . $playerFavorite['kit'] . '.png" alt="' . getKitByID($playerFavorite['kit']) . '" width="160" height="160" style="width:64px;height:64px;object-fit: contain;" />
 					<img class="map" src="' . $ROOT . 'game-images/maps/map_' . $playerFavorite['map'] . '.jpg" alt="' . getMapByID( $playerFavorite['map'] ) . '" />
 					<img id="flag" src="' . $ROOT . 'game-images/flags/' . esc_attr(RANKING_HIDE_COUNTRY ? 'xx' : strtoupper($player['country'])) . '.png" alt="' . getCountryByCode($player['country']) . '" width="32" height="24" />
@@ -1026,7 +1026,7 @@ $template = '
 						foreach($RANK_INFO as $key => $value)
 						{
 							$template .= '
-							<img src="' . $ROOT . 'game-images/ranks/progress/rank_'.$value['rank'].'.png" alt="" style="float: left; margin: 0 5px 5px 0;width:auto;height:65px;object-fit:contain;" height="110" width="110" />			
+							<img src="' . $ROOT . 'game-images/ranks/progress/rank_'.$value['rank'].'.png" alt="" style="float: left; margin: 0 10px 5px 0;width:auto;height:65px;object-fit:contain;" height="110" width="110" />			
 							<p>
 								<strong>Next Rank: '.$value['title'].'</strong>
 							</p>
