@@ -28,7 +28,7 @@ defineVar('TITLE', 'BF2142 Stats');
 defineVar('FOOTER_PAGELOADSPEED_ENABLE', false);
 
 // Refresh time in seconds for stats
-defineVar('RANKING_REFRESH_TIME', 0); // -> default: 600 seconds (10 minutes)
+defineVar('RANKING_REFRESH_TIME', 180); // -> default: 600 seconds (10 minutes)
 
 // Whether to hide bots from rankings
 defineVar('RANKING_HIDE_BOTS', true);

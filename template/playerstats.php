@@ -526,7 +526,7 @@ $template = '
 			
 				<!-- COL RIGHT -->
 				<div class="col">
-					<table border="0" cellspacing="0" cellpadding="0" id="expansion" class="stat">
+					<table border="0" cellspacing="0" cellpadding="0" id="expansion" class="stat" style="display:none;">
 						<tr>
 							<th>Expansion</th>
 							<th>BF2142</th>
