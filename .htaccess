@@ -18,24 +18,27 @@ IndexIgnore *
     # Deny access to the aspx, frontend and system folders. All defined
     # file extensions from the previous rewrite rule wont make it here, which allows
     # direct access to images and such in these folders still.
-    RewriteRule ^.git/ - [R=403,L,NC]
-    RewriteRule ^cache/ - [R=403,L,NC]
-    RewriteRule ^logs/ - [R=403,L,NC]
-	RewriteRule ^template/ - [R=403,L,NC]
-    RewriteRule ^.*\.(txt)$ - [R=403,L,NC]
-    RewriteRule ^.*\.(disabled)$ - [R=403,L,NC]
+    
+    # This will return 403 forbidden instead of redirecting to /
+    # RewriteRule ^cache/ - [R=403,L,NC]
+    
+    RewriteRule ^cache/ / [R=302,L]
+    RewriteRule ^logs/ / [R=302,L]
+	RewriteRule ^template/ / [R=302,L]
+    RewriteRule ^.*\.(txt)$ / [R=302,L]
+    RewriteRule ^.*\.(disabled)$ / [R=302,L]
+    RewriteRule ^.git/ / [R=302,L]
+    RewriteRule ^.gitignore$ / [R=302,L]
 
-    # Don't redirect direct links to non-existent files or directories to the index.php
+    # To prevent direct access to PHP files ending in inc.php
+    RewriteCond %{REQUEST_URI} \.inc\.php$ [NC]
+    RewriteRule ^.*$ / [R=302,L]
+
+    # Redirect if the requested file or directory does NOT exist
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^.*$ / [R=302,L]
 
-    # Don't redirect direct links to non-existent files or directories to the index.php
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-
-    # Don't redirect direct links to non-existent files or directories to the index.php
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
 </IfModule>
 <IfModule !mod_rewrite.c>
     # Tell PHP that the mod_rewrite module is DISABLED.
