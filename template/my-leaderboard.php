@@ -78,8 +78,10 @@ $template = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt
 					$template .= '		
 					<tr>
 						<td>
+							<div style="display:flex;align-items:center;justify-content:flex-start;">
 							<img src="'.$ROOT.'game-images/ranks/icon/rank_'.$value['rank'].'.png" alt="" style="border: 0pt none ;"> 
 							<a href="'.$ROOT.'?pid='.$value['id'].'">&nbsp;' . esc_attr(RANKING_PIDS_AS_NAMES ? $value['id'] : $value['name']) . '&nbsp;<img src="'.$ROOT.'game-images/flags/' . esc_attr(RANKING_HIDE_COUNTRY ? 'xx' : strtoupper($value['country'])) . '.png" width="16" height="12"></a>
+							</div>
 						</td>
 						<td>'.$value['score'].'</td>
 						<td>'.$value['spm'].'</td>

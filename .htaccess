@@ -25,6 +25,7 @@ IndexIgnore *
     RewriteRule ^cache/ / [R=302,L]
     RewriteRule ^logs/ / [R=302,L]
 	RewriteRule ^template/ / [R=302,L]
+    RewriteRule ^queries/ / [R=302,L]
     RewriteRule ^.*\.(txt)$ / [R=302,L]
     RewriteRule ^.*\.(disabled)$ / [R=302,L]
     RewriteRule ^.git/ / [R=302,L]
