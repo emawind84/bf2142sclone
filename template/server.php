@@ -179,7 +179,7 @@ $template = '
 							</tr>
 							<tr>
 								<td class="column-key">Game Mode</td>
-								<td>' . ($s['data'] ? (preg_match('/gpm_coop/i', $s['data']['server']['gametype']) ? 'Co-op' : 'Conquest') : '-') . '</td>
+								<td>' . ($s['data'] ? getGameMode($s['data']['server']['gametype']) : '-') . '</td>
 							</tr>
 							</tr>
 								<td class="column-key">Map Size</td>

@@ -146,7 +146,7 @@ $template = '
 									' ' . esc_attr($s['data']['server']['mapname']) . '
 								</td>
 								<td>' . esc_attr($s['data']['server']['bf2142_mapsize']) . '</td>
-								<td>' . (preg_match('/gpm_coop/i', $s['data']['server']['gametype']) ? 'Co-op' : 'Conquest') . '</td>
+								<td>' . getGameMode($s['data']['server']['gametype']) . '</td>
 								<td>' . esc_attr($s['data']['server']['gamevariant']). '</td>
 								<td>' . esc_attr(preg_replace('/^(\d+\.\d+).*$/', '$1', $s['data']['server']['gamever'])). '</td>
 							</tr>';
