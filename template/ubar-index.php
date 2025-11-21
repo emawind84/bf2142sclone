@@ -36,8 +36,8 @@ $template = '
 						<li><a href="'.$ROOT.'?go=ubar&p=medals">Medals</a></li>
 						<li><a href="'.$ROOT.'?go=ubar&p=medals-sf">SF: Medals</a></li>
 						<li><a href="'.$ROOT.'?go=ubar&p=ranks">Ranks</a></li>
-						<li><a href="http://wiki.bf2s.com/weapons/unlocks/">Unlocks</a></li>
-						<li><a href="http://wiki.bf2s.com/classes/">Kits</a></li>
+						<li><a href="https://web.archive.org/web/20080306025906/http://wiki.bf2s.com/weapons/unlocks/">Unlocks</a></li>
+						<li><a href="https://web.archive.org/web/20080306025906/http://wiki.bf2s.com/classes/">Kits</a></li>
 					</ul>
 					<div style="clear:both"> </div>
 
@@ -80,10 +80,10 @@ $template = '
 									<a style="border: 0" href="'.$ROOT.'?go=ubar&p=medals-sf">Special Forces</a></td>
 								<td><a style="border: 0" href="'.$ROOT.'?go=ubar&p=ranks"><img src="'.$ROOT.'game-images/ranks/ubar/rank_3.jpg" width="96" height="96" alt="" /> <br />
 									Ranks</a></td>
-								<td><a style="border: 0" href="http://wiki.bf2s.com/weapons/unlocks/"><img src="site-images/ubar/l96unlockiconci3.png" width="96" height="96" alt="" /> <br />
+								<td><a style="border: 0" href="https://web.archive.org/web/20080306025906/http://wiki.bf2s.com/weapons/unlocks/"><img src="site-images/ubar/l96unlockiconci3.png" width="96" height="96" alt="" /> <br />
 
 									Unlocks</a></td>
-								<td><a style="border: 0" href="http://wiki.bf2s.com/classes/"><img src="site-images/ubar/kitantitankac6.jpg" width="96" height="96" alt="" /> <br />
+								<td><a style="border: 0" href="https://web.archive.org/web/20080306025906/http://wiki.bf2s.com/classes/"><img src="site-images/ubar/kitantitankac6.jpg" width="96" height="96" alt="" /> <br />
 									Kits</a></td>
 							</tr>
 						</table>
@@ -137,7 +137,7 @@ $template = '
 			<li class="' . ($GO == 'my-leaderboard' ? 'current' : '') . '"><a href="'. $ROOT .'?go=my-leaderboard">My Leader Board</a></li>
 			<li class="' . ($GO == 'currentranking' ? 'current' : '') . '"><a href="'. $ROOT .'?go=currentranking">Rankings</a></li>
 			<li class="' . ($GO == 'ubar' ? 'current' : '') . '"><a href="'. $ROOT .'?go=ubar">UBAR</a></li>
-			<li><a href="http://wiki.bf2s.com/">Wiki</a></li>
+			<li><a href="https://web.archive.org/web/20080306025906/http://wiki.bf2s.com/">Wiki</a></li>
 		</ul>
 		
 		<form action="'.$ROOT.'?go=search" method="post" id="getstats">

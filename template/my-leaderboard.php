@@ -133,6 +133,7 @@ $template = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "htt
 		<li class="' . ($GO == 'servers' ? 'current' : '') . '"><a href="'. $ROOT .'?go=servers">Servers</a></li>
 		<li class="' . ($GO == 'my-leaderboard' ? 'current' : '') . '"><a href="'. $ROOT .'?go=my-leaderboard">My Leader Board</a></li>
 		<li class="' . ($GO == 'currentranking' ? 'current' : '') . '"><a href="'. $ROOT .'?go=currentranking">Rankings</a></li>
+		<li><a href="https://discord.emawind.com">Discord</a></li>
 	</ul>
 	
 	<form action="'.$ROOT.'?go=search" method="post" id="getstats">
